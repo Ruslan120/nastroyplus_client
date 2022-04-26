@@ -1,0 +1,30 @@
+.custom-input {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  input {
+    padding: 8px 11px;
+    margin-top: 15px;
+    border: 1px solid rgb(189, 190, 190);
+    border-radius: 4px;
+    &:focus {
+      border: 2px solid #e48f13;
+      padding: 7px 10px;
+    }
+    
+  }
+  &--error input {
+    border: 1px solid rgb(235, 11, 11);
+  }
+
+}
+.input-error {
+  display: flex;
+  margin-top: 4px;
+  color: rgb(235, 11, 11);
+  align-items: center;
+  i {
+    font-size: 15px;
+    margin-right: 3px;
+  }
+}

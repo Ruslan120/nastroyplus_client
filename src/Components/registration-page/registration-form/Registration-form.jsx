@@ -1,7 +1,7 @@
 import React from "react";
 import "./Registration-form.scss";
 import { useForm } from "react-hook-form";
-import CustomInput from "./custom-input/Custom-input";
+import CustomInput from "../../UI/custom-input/Custom-input";
 
 function RegistrationForm() {
   const {

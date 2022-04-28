@@ -1,6 +1,7 @@
 .registration {
   margin-top: 150px;
   &__header {
+    margin-bottom: 15px;
   }
   &__image {
     display: flex;
@@ -31,7 +32,6 @@
     border: none;
     border-radius: 4px;
     color: #fff;
-    margin-top: 15px;
     &:hover {
       background-color: #c57b0d;
     }

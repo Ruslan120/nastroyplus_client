@@ -3,7 +3,7 @@ import "./Menu.scss";
 import MobileMenu from "../mobile-menu/Mobile-menu";
 import Blur from "../Blur/Blur";
 import {useDispatch} from "react-redux";
-import {addToastTime} from "../../../redux/actions";
+import {addToastTime, setLoginForm} from "../../../redux/actions";
 
 const Menu = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -11,6 +11,12 @@ const Menu = () => {
 
     const handlerTost = () => {
         dispatch(addToastTime("error", "Вы не зарегистрированы"));
+    }
+    const handlerLogin = () => {
+        dispatch(setLoginForm(true));
+    }
+    const handlerBlur = ()=>{
+        setMenuActive((prev)=>!prev)
     }
 
     return (
@@ -27,12 +33,13 @@ const Menu = () => {
                             <li className="menu__link">Каталог</li>
                             <li className="menu__link">Обратная связь</li>
                             <button className="menu__link" onClick={handlerTost}>Вывести ошибку</button>
+                            <button className="menu__link" onClick={handlerLogin}>Авторизация</button>
                         </ul>
                     </div>
                 </div>
             </div>
             <MobileMenu active={menuActive} setActive={setMenuActive}/>
-            <Blur active={menuActive} setActive={setMenuActive}/>
+            <Blur active={menuActive} setActive={handlerBlur}/>
         </div>
     );
 };

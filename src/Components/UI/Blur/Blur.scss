@@ -1,11 +1,12 @@
 .blur{
   display: none;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  left:0;
+  right: 0;
+  bottom: 0;
   position: fixed;
   &--active{
-    z-index: 100;
+    z-index: 1000;
     display: block;
     background: rgba(0,0,0,.6);
   }

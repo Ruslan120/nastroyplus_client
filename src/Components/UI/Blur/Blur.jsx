@@ -7,8 +7,10 @@ const Blur = ({active, setActive}) => {
         }
         else document.body.classList.remove("no-scroll");
     },[active])
+
+
     return (
-            <div className={ active ? "blur blur--active" : "blur"} onClick={()=> setActive((prev)=>!prev)}></div>
+            <div className={ active ? "blur blur--active" : "blur"} onClick={setActive}></div>
     );
 };
 

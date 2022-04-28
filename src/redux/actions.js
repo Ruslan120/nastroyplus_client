@@ -1,4 +1,4 @@
-import {ADD_TOAST, DELETE_TOAST} from "./types";
+import {ADD_TOAST, DELETE_TOAST, SET_IS_OPEN} from "./types";
 import {v4 as uuidv4} from 'uuid';
 
 
@@ -29,6 +29,15 @@ export const deleteToast = (id) => {
         type: DELETE_TOAST,
         payload: {
             id
+        }
+    }
+}
+
+export const setLoginForm = (isOpen) => {
+    return {
+        type: SET_IS_OPEN,
+        payload: {
+            isOpen
         }
     }
 }

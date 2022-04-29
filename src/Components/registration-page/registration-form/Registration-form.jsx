@@ -14,10 +14,9 @@ function RegistrationForm() {
     getValues,
     reset,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onBlur" });
 
   const onSubmit = (data) => {
-    //   console.log(data)
     dispatch(registrationAction(data.email, data.password));
     reset();
   };

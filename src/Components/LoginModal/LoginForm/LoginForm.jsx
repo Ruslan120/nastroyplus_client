@@ -6,7 +6,8 @@ import CustomBtn from "../../UI/custom-btn/Custom-btn";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../../../redux/actions";
 
-const LoginForm = (active) => {
+const LoginForm = ({active, setActive,  ...props}) => {
+  console.log(props)
   const {
     register,
     handleSubmit,
@@ -18,6 +19,7 @@ const LoginForm = (active) => {
   const onSubmit = (data) => {
     //   console.log(data)
     dispatch(loginAction(data.email, data.password));
+    setActive();
     reset();
   };
 

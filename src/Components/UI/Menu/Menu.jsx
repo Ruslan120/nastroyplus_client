@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./Menu.scss";
 import MobileMenu from "../mobile-menu/Mobile-menu";
 import Blur from "../Blur/Blur";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToastTime,
   logoutAction,
@@ -10,6 +10,7 @@ import {
 } from "../../../redux/actions";
 
 const Menu = () => {
+  const isAuth = useSelector((state) => state.app.isAuth);
   const [menuActive, setMenuActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -45,12 +46,15 @@ const Menu = () => {
               <button className="menu__link" onClick={handlerTost}>
                 Вывести ошибку
               </button>
-              <button className="menu__link" onClick={handlerLogin}>
-                Авторизация
-              </button>
-              <button className="menu__link" onClick={handlerLogout}>
-                Выход
-              </button>
+              {isAuth ? (
+                <button className="menu__link" onClick={handlerLogout}>
+                  Выход
+                </button>
+              ) : (
+                <button className="menu__link" onClick={handlerLogin}>
+                  Авторизация
+                </button>
+              )}
             </ul>
           </div>
         </div>

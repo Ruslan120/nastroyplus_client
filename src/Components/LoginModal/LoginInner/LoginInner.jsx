@@ -1,7 +1,6 @@
 import {React} from 'react';
 import "./LoginInner.scss";
 import LoginForm from "../LoginForm/LoginForm";
-import Blur from "../../UI/Blur/Blur";
 
 
 const LoginInner = ({active, setActive}) => {
@@ -16,7 +15,7 @@ const LoginInner = ({active, setActive}) => {
                         </div>
                     </div>
                     <div className="login__body">
-                        <LoginForm/>
+                        <LoginForm active = {active}/>
                     </div>
                 </div>
             </div>

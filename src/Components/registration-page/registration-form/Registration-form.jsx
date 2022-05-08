@@ -39,6 +39,7 @@ function RegistrationForm() {
         register={register("password", { required: "Обязательное поле" })}
         error={errors.password}
         placeholder="password"
+        type="password"
       />
       <CustomInput
         register={register("repeatPassword", {
@@ -48,6 +49,7 @@ function RegistrationForm() {
         })}
         error={errors.repeatPassword}
         placeholder="repeat-password"
+        type="password"
       />
       <CustomBtn disabled={!isValid} style={{ alignSelf: "flex-start" }}>
         Зарегистрироваться

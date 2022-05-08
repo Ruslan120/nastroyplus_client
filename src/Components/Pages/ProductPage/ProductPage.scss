@@ -1,0 +1,66 @@
+.product-page{
+  &__title{
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  &__content{
+    display: flex;
+
+  }
+  &__img{
+    width: 30%;
+
+  }
+  &__data{
+    margin-left: 50px;
+    width: 70%;
+  }
+
+  &__main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price{
+    font-size: 30px;
+    font-weight: bold;
+    &:after{
+      content: " руб.";
+    }
+
+  }
+  &__controlls{
+    margin-top: 15px;
+  }
+  &__description{
+    margin-top: 20px;
+    max-width: 50%
+  }
+  &__text{
+    word-wrap: break-word;
+    line-height: 20px;
+  }
+
+  @media(max-width: 720px){
+    &__content{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    &__img{
+      width: 100%;
+    }
+    &__data{
+      margin-top: 15px;
+      margin-left: 0px;
+      width: 100%;
+    }
+    &__description{
+      margin-top: 20px;
+      max-width: 100%;
+    }
+  }
+}
+
+

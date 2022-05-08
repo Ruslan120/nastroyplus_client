@@ -1,0 +1,14 @@
+.favorite__btn{
+  background-color: #ED78B9;
+  padding: 10px 17px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  &:hover {
+    background-color: #cb11ab;
+  }
+  &:disabled,
+  &[disabled] {
+    background-color: #724708;
+  }
+}

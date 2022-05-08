@@ -1,0 +1,30 @@
+.interesting-products {
+  margin-top: 16px;
+  &__header {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  &__items {
+    margin-top: 0px -10px;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  &__img{
+
+  }
+  &__data{
+
+  }
+  &__main{
+
+  }
+  &__price{
+
+  }
+
+}
+
+

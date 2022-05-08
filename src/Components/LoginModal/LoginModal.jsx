@@ -1,5 +1,4 @@
-import { React, useState } from "react";
-import "./LoginModal.scss";
+import { React,} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginForm } from "../../redux/actions";
 import Modal from "../UI/modal/Modal";

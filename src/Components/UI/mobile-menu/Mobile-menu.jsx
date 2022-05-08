@@ -1,35 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Mobile-menu.scss";
+import MenuItem from "./MenuItem";
+import api from "../../../http";
+
 
 const MobileMenu = ({active, setActive}) => {
+    const [categoryData, setCategoryData] = useState([])
+
+    useEffect(() => {
+        api.get("http://localhost:7000/api/category").then((res) => {
+            setCategoryData(res.data)
+        })
+    }, [])
     return (
         <div className={active ? "mobile-menu mobile-menu--active" : "mobile-menu"}>
             <div className={"mobile-menu__content"}>
-                <div className={"mobile-menu__close"} onClick={()=>setActive(prev=>!prev)}>
+                <div className={"mobile-menu__close"} onClick={() => setActive(prev => !prev)}>
                     <span className="material-icons">
                         close
                     </span>
                 </div>
-                <div className="mobile-menu__header">Заголовок</div>
+                <div className="mobile-menu__header">Каталог</div>
                 <ul className="mobile-menu__items">
-                    <li className="mobile-menu__item">
-                        <span className="material-icons">
-                            home
-                        </span>
-                        <a href='/'>Главная</a>
-                    </li>
-                    <li className="mobile-menu__item">
-                        <span className="material-icons">
-                            menu_book
-                        </span>
-                        <a href='/'>Каталог</a>
-                    </li>
-                    <li className="mobile-menu__item">
-                        <span className="material-icons">
-                            textsms
-                        </span>
-                        <a href='/'>Обратная связь</a>
-                    </li>
+                    {categoryData.map((category=><MenuItem key={category.id} name={category.name} subcategories={category.subcategories}/>))}
                 </ul>
             </div>
         </div>

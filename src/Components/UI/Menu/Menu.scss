@@ -20,7 +20,6 @@
     color: #FFFFFF;
   }
   &__btn {
-    display: none;
     width: 23px;
     height: 20px;
     position: relative;
@@ -59,6 +58,13 @@
     line-height: 160%;
   }
 
+  &__link{
+    &:hover{
+      border-bottom: 1px solid white;
+      cursor: pointer;
+    }
+  }
+
   &__link:not(:first-child) {
     margin-left: 50px;
   }
@@ -69,9 +75,6 @@
     }
     &__links {
       display: none;
-    }
-    &__btn {
-      display: block;
     }
   }
 }

@@ -1,0 +1,37 @@
+.menu-item{
+  padding: 14px 32px;
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+  border-bottom: 1px solid #38383a;
+  &:hover{
+    background-color: #373b3e;
+    cursor: pointer;
+  }
+  &__header{
+    display: flex;
+    align-items: center;
+    span{
+      margin-right: 5px;
+    }
+    h3{
+      color: #FFFFFF;
+    }
+  }
+}
+.submenu{
+  margin-top: 14px;
+  &__items{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item{
+    padding: 10px 7px;
+    border-bottom: 1px solid gray;
+    &:hover{
+      color: aquamarine;
+    }
+
+  }
+}

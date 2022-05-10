@@ -7,7 +7,7 @@ import ProductItem from "../../../UI/ProductItem/ProductItem";
 const InterestingProducts = () => {
     const [products, setProducts] = useState([])
     const [totalCount, setTotalCount] = useState(0)
-    const limit = 5;
+    const limit = 6;
     const totalPages = Math.ceil(totalCount / limit)
     const [page, setPage] = useState(1);
 
@@ -28,7 +28,6 @@ const InterestingProducts = () => {
             {page < totalPages &&
             <CustomBtn onClick={e => setPage((prevState => ++prevState))}>Показать еще</CustomBtn>}
         </div>
-
     );
 };
 

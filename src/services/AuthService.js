@@ -16,4 +16,8 @@ export default class AuthService {
   static async logout() {
     return api.post("/user/logout");
   }
+
+  static async isauth() {
+    return api.get("/user/isauth");
+  }
 }

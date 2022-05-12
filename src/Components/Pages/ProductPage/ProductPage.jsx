@@ -57,7 +57,7 @@ const ProductPage = () => {
       <div className="product-page__content">
         <img
           className="product-page__img"
-          src="https://images.wbstatic.net/c246x328/new/59620000/59628345-1.avif"
+          src={`http://localhost:7000/images/${productData.image}`}
           alt=""
         />
         <div className="product-page__data">

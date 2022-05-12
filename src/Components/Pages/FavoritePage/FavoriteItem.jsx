@@ -11,7 +11,7 @@ const FavoriteItem = ({favorite, deleteHandler}) => {
 
     return (
         <div className="favorite-item">
-            <img src="https://jur24pro.ru/upload/iblock/eb1/oszahh14td1pmspv3c2t98r3n4nm9h5z.jpg"
+            <img src={`http://localhost:7000/images/${favorite.product.image}`}
                  className="favorite-item__img" onClick={goProduct}></img>
             <div className="favorite-item__link" onClick={goProduct}>{favorite.product.name}</div>
             <div className="favorite-item__price"><span>{favorite.product.price}</span></div>

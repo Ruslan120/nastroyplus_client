@@ -17,7 +17,7 @@ const ProductItem = ({ product }) => {
       >
         <div className="product__image">
           <img
-            src="https://images.wbstatic.net/c246x328/new/59620000/59628345-1.avif" alt="product-image"/>
+            src={`http://localhost:7000/images/${product.image}`} alt="product-image"/>
         </div>
         <div className="product__info">
           <p className="product__price">{product.price}</p>

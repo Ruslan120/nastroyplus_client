@@ -1,0 +1,25 @@
+.favorite-page{
+  width: 80%;
+  margin: 0 auto;
+  &__title{
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+  &__content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+  }
+  &__items{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
+
+
+

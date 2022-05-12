@@ -31,7 +31,24 @@
 
   }
   &__controlls{
+    display: flex;
     margin-top: 15px;
+    button{
+      &:first-child{
+        margin-right: 20px;
+      }
+    }
+
+    @media (max-width: 435px) {
+     flex-direction: column;
+      button{
+        &:first-child{
+          margin-right: 0px;
+        }
+        margin: 5px 0px;
+      }
+    }
+
   }
   &__description{
     margin-top: 20px;

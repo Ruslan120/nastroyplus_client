@@ -4,12 +4,11 @@ import MobileMenu from "../mobile-menu/Mobile-menu";
 import Blur from "../Blur/Blur";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    addToastTime,
-    logoutAction,
     setLoginForm,
 } from "../../../redux/actions";
 import {useNavigate} from "react-router-dom";
-
+import UserMenu from "../UserMenu/UserMenu";
+import MenuLink from "./MenuLink";
 
 
 const Menu = () => {
@@ -18,18 +17,13 @@ const Menu = () => {
     const [menuActive, setMenuActive] = useState(false);
     const dispatch = useDispatch();
 
-    const handlerTost = () => {
-        dispatch(addToastTime("error", "Вы не зарегистрированы"));
-    };
     const handlerLogin = () => {
         dispatch(setLoginForm(true));
     };
     const handlerBlur = () => {
         setMenuActive((prev) => !prev);
     };
-    const handlerLogout = () => {
-        dispatch(logoutAction());
-    };
+
 
     return (
         <div>
@@ -43,22 +37,13 @@ const Menu = () => {
                         </div>
                         <div className="menu__logo">Настрой Плюс</div>
 
-                        <ul className="menu__links">
-                            <li className="menu__link" onClick={event => navigate(`/`)}>Главная</li>
-                            <li className="menu__link" onClick={event => navigate(`/Feedback`)}>Обратная связь</li>
-                            <button className="menu__link" onClick={handlerTost}>
-                                Вывести ошибку
-                            </button>
-                            {isAuth ? (
-                                <button className="menu__link" onClick={handlerLogout}>
-                                    Выход
-                                </button>
-                            ) : (
-                                <button className="menu__link" onClick={handlerLogin}>
-                                    Авторизация
-                                </button>
-                            )}
-                        </ul>
+                        <div className="menu__links">
+                            <MenuLink text={"Главная"} iconName={"home"} onClick={event => navigate(`/`)}/>
+                            <MenuLink text={"Обратная связь"} iconName={"feedback"} onClick={event => navigate(`/Feedback`)}/>
+                            {isAuth ?<UserMenu/> : <MenuLink text={"Войти"} iconName={"person"}
+                                onClick={handlerLogin}/>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

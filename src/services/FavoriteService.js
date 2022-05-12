@@ -15,7 +15,7 @@ export default class FavoriteService {
     });
     return response;
   }
-  static async getFavorites() {
+  static async myFavorites() {
     const response = await api.get("/favorite");
     return response;
   }
@@ -23,4 +23,5 @@ export default class FavoriteService {
     const response = await api.get(`/favorite/isfavorite/${productId}`);
     return response;
   }
+
 }

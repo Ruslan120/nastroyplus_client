@@ -10,3 +10,6 @@ export const SET_IS_OPEN = "SET_IS_OPEN"
 export const SET_USER_DATA = "SET_USER_DATA"
 export const DELETE_USER_DATA = "DELETE_USER_DATA"
 export const SET_IS_AUTH = "SET_IS_AUTH"
+
+export const SET_FAVORITES = "SET_FAVORITES"
+export const DELETE_FAVORITE = "DELETE_FAVORITE"

@@ -5,6 +5,7 @@ import RegistrationPage from "../registration-page/Registration-page";
 import MainPage from "./MainPage/MainPage";
 import ProductsPage from "./ProductsPage/ProductsPage";
 import ProductPage from "./ProductPage/ProductPage";
+import FavoritePage from "./FavoritePage/FavoritePage";
 const PageContainer = () => {
     return (
         <div className="page-container">
@@ -13,6 +14,7 @@ const PageContainer = () => {
                 <Route path="/" element={<MainPage/>}/>
                 <Route path="/products" element={<ProductsPage/>}/>
                 <Route path="/product/:productId" element={<ProductPage/>}/>
+                <Route path="/favorite" element={<FavoritePage/>}/>
             </Routes>
         </div>
     );

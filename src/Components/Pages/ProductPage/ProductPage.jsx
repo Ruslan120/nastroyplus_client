@@ -45,7 +45,7 @@ const ProductPage = () => {
       setProductData(response.data);
     });
   }, []);
-  
+
   useEffect(() => {
     FavoriteService.isFavorite(productId).then((response) => {
       setIsFavorite(response.data);
@@ -67,14 +67,12 @@ const ProductPage = () => {
               <CustomBtn>Добавить в корзину</CustomBtn>
               {isFavorite ? (
                 <FavoriteBtn
-                  style={{ marginLeft: "20px" }}
                   onClick={deleteFromFavoriteHandler}
                 >
                   Удалить из избранного
                 </FavoriteBtn>
               ) : (
                 <FavoriteBtn
-                  style={{ marginLeft: "20px" }}
                   onClick={addToFavoriteHandler}
                 >
                   Добавить в избранное

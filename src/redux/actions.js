@@ -1,15 +1,14 @@
 import {
-    ADD_TOAST,
+    ADD_TOAST, DELETE_FAVORITE,
     DELETE_TOAST,
-    DELETE_USER_DATA,
+    DELETE_USER_DATA, SET_FAVORITES,
     SET_IS_AUTH,
     SET_IS_OPEN,
     SET_USER_DATA,
 } from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
-import {type} from "@testing-library/user-event/dist/type";
-import ProductService from "../services/ProductService";
+import FavoriteService from "../services/FavoriteService";
 
 export const addToastTime = (type, message) => {
     return (dispatch) => {
@@ -111,6 +110,48 @@ export const logoutAction = () => {
             dispatch(setIsAuth(false));
             dispatch(deleteUserData());
             dispatch(addToastTime("success", "Вы вышли с аккаунта"));
+        } catch (e) {
+            console.log(e.response?.data?.message);
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+
+export const setFavorites = (favorites) => {
+    return {
+        type: SET_FAVORITES,
+        payload: {
+            favorites: favorites,
+        },
+    };
+};
+export const deleteFavoriteData = (productId) => {
+    return {
+        type: DELETE_FAVORITE,
+        payload: {
+            productId: productId,
+        },
+    };
+};
+
+export const getFavorites = () => {
+    return async (dispatch) => {
+        try {
+            const response = await FavoriteService.myFavorites();
+            dispatch(setFavorites(response.data))
+
+        } catch (e) {
+            console.log(e.response?.data?.message);
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+export const deleteFavorite = (productId) => {
+    return async (dispatch) => {
+        try {
+            const response = await FavoriteService.deleteFromFavorite(productId)
+            dispatch(deleteFavoriteData(productId))
+
         } catch (e) {
             console.log(e.response?.data?.message);
             dispatch(addToastTime("error", e.response.data.message));

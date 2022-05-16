@@ -1,7 +1,7 @@
 import {
-    ADD_TOAST, DELETE_FAVORITE,
+    ADD_TOAST, DELETE_BASKET, DELETE_FAVORITE,
     DELETE_TOAST,
-    DELETE_USER_DATA, SET_FAVORITES,
+    DELETE_USER_DATA, SET_BASKET_COUNT, SET_BASKETS, SET_FAVORITES,
     SET_IS_AUTH,
     SET_IS_OPEN,
     SET_USER_DATA,
@@ -9,6 +9,7 @@ import {
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
 import FavoriteService from "../services/FavoriteService";
+import BasketService from "../services/BasketService";
 
 export const addToastTime = (type, message) => {
     return (dispatch) => {
@@ -75,13 +76,11 @@ export const loginAction = (email, password) => {
     return async (dispatch) => {
         try {
             const response = await AuthService.login(email, password);
-            console.log(response);
             localStorage.setItem("token", response.data.accessToken);
             dispatch(setIsAuth(true));
             dispatch(setUserData(response.data.user));
             dispatch(addToastTime("success", "Успешная авторизация"));
         } catch (e) {
-            console.log(e.response?.data?.message);
             dispatch(addToastTime("error", e.response.data.message));
         }
     };
@@ -90,13 +89,11 @@ export const registrationAction = (email, password) => {
     return async (dispatch) => {
         try {
             const response = await AuthService.registration(email, password);
-            console.log(response);
             localStorage.setItem("token", response.data.accessToken);
             dispatch(setIsAuth(true));
             dispatch(setUserData(response.data.user));
             dispatch(addToastTime("success", "Успешная регистрация"));
         } catch (e) {
-            console.log(e.response?.data?.message);
             dispatch(addToastTime("error", e.response.data.message));
         }
     };
@@ -105,13 +102,11 @@ export const logoutAction = () => {
     return async (dispatch) => {
         try {
             const response = await AuthService.logout();
-            console.log(response);
             localStorage.removeItem("token")
             dispatch(setIsAuth(false));
             dispatch(deleteUserData());
             dispatch(addToastTime("success", "Вы вышли с аккаунта"));
         } catch (e) {
-            console.log(e.response?.data?.message);
             dispatch(addToastTime("error", e.response.data.message));
         }
     };
@@ -141,7 +136,6 @@ export const getFavorites = () => {
             dispatch(setFavorites(response.data))
 
         } catch (e) {
-            console.log(e.response?.data?.message);
             dispatch(addToastTime("error", e.response.data.message));
         }
     };
@@ -153,7 +147,69 @@ export const deleteFavorite = (productId) => {
             dispatch(deleteFavoriteData(productId))
 
         } catch (e) {
-            console.log(e.response?.data?.message);
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+
+
+export const setBaskets = (baskets) => {
+    return {
+        type: SET_BASKETS,
+        payload: {
+            baskets: baskets,
+        },
+    };
+};
+export const deleteBasket = (basketId) => {
+    return {
+        type: DELETE_BASKET,
+        payload: {
+            basketId: basketId,
+        },
+    };
+};
+
+export const updateCountBasket = (basketId, count) => {
+    return {
+        type: SET_BASKET_COUNT,
+        payload: {
+            basketId: basketId,
+            count: count,
+        },
+    };
+};
+
+export const getBaskets = () => {
+    return async (dispatch) => {
+        try {
+            const response = await BasketService.myBaskets();
+            dispatch(setBaskets(response.data))
+
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+export const deleteBasketData = (basketId) => {
+    return async (dispatch) => {
+        try {
+            const response = await BasketService.deleteFromBasket(basketId)
+            dispatch(deleteBasket(basketId))
+
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+
+export const updateBasketCount = (basketId, count) => {
+    return async (dispatch) => {
+        try {
+            const response = await BasketService.updateBasketCount(basketId, count)
+            dispatch(updateCountBasket(basketId, count))
+
+        } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
         }
     };

@@ -1,20 +1,25 @@
 import React from 'react';
 import "./PageContainer.scss";
-import {Route, Routes} from "react-router-dom";
-import RegistrationPage from "../registration-page/Registration-page";
+import {Navigate, Route, Routes} from "react-router-dom";
+import {useSelector} from 'react-redux';
+import {authRoutes, publicRoutes} from '../../routes';
+import {MAIN_ROUTE} from '../../utils/consts';
 import MainPage from "./MainPage/MainPage";
-import ProductsPage from "./ProductsPage/ProductsPage";
-import ProductPage from "./ProductPage/ProductPage";
-import FavoritePage from "./FavoritePage/FavoritePage";
+
 const PageContainer = () => {
+    const isAuth = useSelector(state => state.app.isAuth)
     return (
         <div className="page-container">
             <Routes>
-                <Route path="/registration" element={<RegistrationPage/>}/>
-                <Route path="/" element={<MainPage/>}/>
-                <Route path="/products" element={<ProductsPage/>}/>
-                <Route path="/product/:productId" element={<ProductPage/>}/>
-                <Route path="/favorite" element={<FavoritePage/>}/>
+                {isAuth && authRoutes.map(({path, Component}) =>
+                    <Route key={path} path={path} element={Component}/>
+                )}
+
+                {publicRoutes.map(({path, Component}) =>
+                    <Route key={path} path={path} element={Component}/>
+                )}
+
+                <Route path="*" element={<Navigate replace to="/"/>}/>
             </Routes>
         </div>
     );

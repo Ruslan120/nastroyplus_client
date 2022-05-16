@@ -21,7 +21,7 @@ const InterestingProducts = () => {
     }, [page, limit])
     return (
         <div className="interesting-products">
-            <h2 className="interesting-products__header">Возможно, Вам понравится</h2>
+            <h2 className="interesting-products__header">Все товары</h2>
             <div className="interesting-products__items">
                 {products.map(product => <ProductItem key={product.id} product={product}/>)}
             </div>

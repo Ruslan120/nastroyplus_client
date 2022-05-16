@@ -1,7 +1,5 @@
 import React from "react";
 import "./ProductItem.scss";
-import CustomBtn from "../custom-btn/Custom-btn";
-import FavoriteBtn from "../favorite-btn/Favorite-btn";
 import { useNavigate } from "react-router-dom";
 
 const ProductItem = ({ product }) => {

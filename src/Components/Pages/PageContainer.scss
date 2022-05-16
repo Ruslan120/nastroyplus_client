@@ -3,4 +3,9 @@
   max-width: 1600px;
   margin: 0 auto;
   margin-top: 88px;
+
+  @media (max-width: 758px) {
+    margin-top: 60px;
+    
+  }
 }

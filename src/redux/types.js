@@ -13,3 +13,9 @@ export const SET_IS_AUTH = "SET_IS_AUTH"
 
 export const SET_FAVORITES = "SET_FAVORITES"
 export const DELETE_FAVORITE = "DELETE_FAVORITE"
+
+
+export const SET_BASKETS = "SET_BASKETS"
+export const DELETE_BASKET = "DELETE_BASKET"
+export const SET_BASKET_COUNT = "SET_BASKET_COUNT"
+

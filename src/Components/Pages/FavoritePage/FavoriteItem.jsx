@@ -1,5 +1,4 @@
 import React from 'react';
-import CustomBtn from "../../UI/custom-btn/Custom-btn";
 import {useNavigate} from "react-router-dom";
 import './FavoriteItem.scss';
 
@@ -11,13 +10,12 @@ const FavoriteItem = ({favorite, deleteHandler}) => {
 
     return (
         <div className="favorite-item">
-            <img src={`http://localhost:7000/images/${favorite.product.image}`}
-                 className="favorite-item__img" onClick={goProduct}></img>
-            <div className="favorite-item__link" onClick={goProduct}>{favorite.product.name}</div>
+            <img className="favorite-item__img"
+                 src={`http://localhost:7000/images/${favorite.product.image}`}></img>
+            <div className="favorite-item__link">{favorite.product.name}</div>
             <div className="favorite-item__price"><span>{favorite.product.price}</span></div>
-            <CustomBtn>Добавить в корзину</CustomBtn>
-            <div className="favorite-item__delete"
-                 onClick={deleteHandler}><span>Удалить</span>
+            <div className="favorite-item__delete" onClick={deleteHandler}>
+                <span><i className="material-icons">close</i></span>
             </div>
         </div>
     );

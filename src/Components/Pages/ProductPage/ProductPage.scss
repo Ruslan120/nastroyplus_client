@@ -1,23 +1,26 @@
 .product-page {
   &__title {
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
   }
 
   &__content {
     display: flex;
-
   }
 
-  &__img {
-    width: 30%;
-
+  &__image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    img{
+      max-width: 70%;
+    }
   }
 
   &__data {
     margin-left: 50px;
-    width: 70%;
+    width: 50%;
   }
 
   &__main {
@@ -30,9 +33,8 @@
     font-weight: bold;
 
     &:after {
-      content: " руб.";
+      content: " ₽";
     }
-
   }
 
   &__controlls {
@@ -65,12 +67,11 @@
         margin: 5px 0px;
       }
     }
-
   }
 
   &__description {
     margin-top: 20px;
-    max-width: 50%
+    max-width: 50%;
   }
 
   &__text {
@@ -78,8 +79,7 @@
     line-height: 20px;
   }
 
-
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     &__content {
       display: flex;
       flex-direction: column;
@@ -99,5 +99,3 @@
     }
   }
 }
-
-

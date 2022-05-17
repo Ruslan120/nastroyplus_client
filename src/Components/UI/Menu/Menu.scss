@@ -58,22 +58,8 @@
     transition: color 0.3s ease 0s;
   }
 
-  &__link{
-    &:hover{
-      color: white;
-      cursor: pointer;
-    }
-  }
-
-  &__link:not(:first-child) {
-    margin-left: 50px;
-  }
-
   @media (max-width: 758px) {
     &__logo {
-      display: none;
-    }
-    &__links {
       display: none;
     }
   }

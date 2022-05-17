@@ -50,7 +50,9 @@
   &__totalPrice{
     font-weight: bold;
     text-align: center;
+    display: flex;
     @media (max-width: 700px){
+      justify-content: flex-start;
       margin-top: 10px;
       grid-column: 2 span;
     }

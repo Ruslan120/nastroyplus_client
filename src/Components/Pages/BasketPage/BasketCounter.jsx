@@ -8,7 +8,8 @@ const BasketCounter = ({count, increment, decrement}) => {
             <span className="counter__value">{count}</span>
             <div className="counter__controls">
                 <span className="counter__up" onClick={increment}><i className="material-icons">expand_less</i></span>
-                <span className="counter__down" onClick={decrement}><i className="material-icons">expand_more</i></span>
+                {count>1 && <span className="counter__down" onClick={decrement}><i className="material-icons">expand_more</i></span>}
+                
             </div>
         </div>
     );

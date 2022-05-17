@@ -10,7 +10,11 @@ const BasketItem = ({basket, changeCountBasket, deleteBasket}) => {
         setCounter(prevState => ++prevState)
     }
     const decrement = ()=>{
-        setCounter(prevState => --prevState)
+        setCounter(prevState => {
+            if(prevState > 1){
+                return --prevState  
+            }else return prevState
+        })
     }
     useEffect(()=>{
         changeCountBasket(basket.id, counter);

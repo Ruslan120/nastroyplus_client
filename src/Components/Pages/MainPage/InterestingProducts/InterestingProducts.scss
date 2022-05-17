@@ -7,9 +7,12 @@
   }
 
   &__items {
-    margin-top: 0px -10px;
+    margin: 0px -16px;
     display: flex;
     flex-wrap: wrap;
+    @media (max-width: 660px) {
+      margin: 0 -8px
+    }
 
   }
   &__img{

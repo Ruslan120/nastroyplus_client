@@ -2,10 +2,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 700px){
+    grid-column: 2 span;
+    grid-row: 2 span;
+    justify-content: flex-start;
+  }
+  @media (max-width: 500px){
+    margin-top: 10px;
+    max-width: 100%;
+    grid-column: 4 span;
+    grid-row: 1 span;
+  }
+
   &__controls{
     margin-left: 10px;
+    position: relative;
     display: flex;
     flex-direction: column;
+    height: 50px;
+    width: 30px;
     span{
       &:hover{
         cursor: pointer;
@@ -17,5 +32,13 @@
     &:after{
       content: " шт."
     }
+  }
+  &__up{
+    position: absolute;
+    top: 0px
+  }
+  &__down{
+    position: absolute;
+    bottom: 0px;
   }
 }

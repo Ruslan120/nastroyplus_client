@@ -1,20 +1,29 @@
 .user-menu {
   margin-left: 50px;
   position: relative;
-  &:hover &__dropdown{
+  &:hover &__dropdown {
     display: block;
   }
 
   &__icon {
     color: white;
     font-size: 30px;
+    @media (max-width: 758px) {
+      font-size: 30px;
+    }
+    @media (max-width: 450px) {
+      font-size: 24px;
+    }
   }
 
   &__text {
-    color: rgba(255, 255, 255, .6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 16px;
     line-height: 20px;
     transition: color 0.3s ease 0s;
+    @media (max-width: 758px) {
+      display: none;
+    }
   }
 
   &__head {
@@ -27,14 +36,12 @@
       cursor: pointer;
     }
 
-
     &:hover .user-menu__text {
       color: white;
       cursor: pointer;
     }
-
   }
-  &__dropdown{
+  &__dropdown {
     display: none;
     position: absolute;
     z-index: 50;
@@ -43,7 +50,6 @@
     top: 100%;
     right: 0;
   }
-
 }
 
 .user-dropdown {
@@ -57,44 +63,42 @@
   flex-direction: column;
   color: black;
 
-  &__items{
+  &__items {
     border-bottom: 1px solid gray;
     display: flex;
     flex-direction: column;
     padding: 10px 0;
   }
-  &__item{
-    &:not(:first-child){
+  &__item {
+    &:not(:first-child) {
       margin-top: 10px;
     }
     display: flex;
     align-items: center;
-    span{
+    span {
       margin-left: 10px;
     }
     transition: color 0.3s ease 0s;
-    &:hover{
+    &:hover {
       color: fuchsia;
       cursor: pointer;
     }
   }
 
   &__data {
-    span{
+    span {
       font-size: 17px;
       font-weight: bold;
     }
   }
-  &__logout{
+  &__logout {
     margin-top: 10px;
-    span{
+    span {
       color: #8b8b8b;
-      &:hover{
+      &:hover {
         color: black;
         cursor: pointer;
       }
     }
-
   }
-
 }

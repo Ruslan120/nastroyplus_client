@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./BasketItem.scss";
 import BasketCounter from "./BasketCounter";
+import {BASE_URL} from "../../../utils/consts"
 
 const BasketItem = ({basket, changeCountBasket, deleteBasket}) => {
     const [counter, setCounter] = useState(basket.count);
@@ -18,7 +19,7 @@ const BasketItem = ({basket, changeCountBasket, deleteBasket}) => {
     return (
         <div className="basket-item">
             <img className="basket-item__img"
-                 src={`http://localhost:7000/images/${basket.product.image}`}></img>
+                 src={`${BASE_URL}/images/${basket.product.image}`}></img>
             <div className="basket-item__name">{basket.product.name}</div>
             <BasketCounter count={basket.count} increment={increment} decrement={decrement}/>
             <div className="basket-item__totalPrice">{(basket.product.price * basket.count).toFixed(2)}</div>

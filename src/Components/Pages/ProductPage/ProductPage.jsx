@@ -9,6 +9,7 @@ import FavoriteService from "../../../services/FavoriteService";
 import { useDispatch } from "react-redux";
 import { addToastTime } from "../../../redux/actions";
 import BasketService from "../../../services/BasketService";
+import { BASE_URL } from "../../../utils/consts";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const ProductPage = () => {
       <div className="product-page__content">
         <div className="product-page__image">
           <img
-            src={`http://localhost:7000/images/${productData.image}`}
+            src={`${BASE_URL}/images/${productData.image}`}
             alt=""
           />
         </div>

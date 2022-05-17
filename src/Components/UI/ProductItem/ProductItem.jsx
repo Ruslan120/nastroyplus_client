@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductItem.scss";
 import { useNavigate } from "react-router-dom";
+import {BASE_URL} from "../../../utils/consts"
 
 const ProductItem = ({ product }) => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const ProductItem = ({ product }) => {
       >
         <div className="product__image">
           <img
-            src={`http://localhost:7000/images/${product.image}`} alt="product-image"/>
+            src={`${BASE_URL}/images/${product.image}`} alt="product-image"/>
         </div>
         <div className="product__info">
           <p className="product__price">{product.price}</p>

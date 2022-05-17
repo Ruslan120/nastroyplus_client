@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import "./Mobile-menu.scss";
 import MenuItem from "./MenuItem";
 import api from "../../../http";
+import {BASE_URL} from "../../../utils/consts"
 
 
 const MobileMenu = ({active, setActive}) => {
     const [categoryData, setCategoryData] = useState([])
 
     useEffect(() => {
-        api.get("http://localhost:7000/api/category").then((res) => {
+        api.get(`${BASE_URL}/api/category`).then((res) => {
             setCategoryData(res.data)
         })
     }, [])

@@ -1,52 +1,60 @@
-import { React, useEffect } from "react";
+import {React, useEffect} from "react";
 import "./LoginForm.scss";
 import CustomInput from "../../UI/custom-input/Custom-input";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
-import { useDispatch } from "react-redux";
-import { loginAction } from "../../../redux/actions";
+import {useDispatch} from "react-redux";
+import {loginAction} from "../../../redux/actions";
+import {useNavigate} from "react-router-dom";
 
-const LoginForm = ({active, setActive,  ...props}) => {
-  console.log(props)
-  const {
-    register,
-    handleSubmit,
-    setFocus,
-    reset,
-    formState: { errors,},
-  } = useForm({ mode: "onSubmit" });
-  const dispatch = useDispatch();
-  const onSubmit = (data) => {
-    //   console.log(data)
-    dispatch(loginAction(data.email, data.password));
-    setActive();
-    reset();
-  };
+const LoginForm = ({active, close, ...props}) => {
+    const navigate = useNavigate();
+    console.log(props)
+    const {
+        register,
+        handleSubmit,
+        setFocus,
+        reset,
+        formState: {errors,},
+    } = useForm({mode: "onSubmit"});
+    const dispatch = useDispatch();
+    const onSubmit = (data) => {
+        dispatch(loginAction(data.email, data.password));
+        close();
+        reset();
+    };
+    const onRegistration = () => {
+        navigate("/registration")
+        close();
+    };
 
-  useEffect(() => {
-    setFocus("email");
-  }, [active]);
+    useEffect(() => {
+        setFocus("email");
+    }, [active]);
 
-  return (
-    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-      <CustomInput
-        register={register("email", {
-          required: "Обязательное поле",
-        })}
-        error={errors.email}
-        placeholder="email"
-      />
-      <CustomInput
-        register={register("password", {
-          required: "Обязательное поле",
-        })}
-        type="password"
-        error={errors.password}
-        placeholder="password"
-      />
-      <CustomBtn>Войти</CustomBtn>
-    </form>
-  );
+    return (
+        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+            <CustomInput
+                register={register("email", {
+                    required: "Обязательное поле",
+                })}
+                error={errors.email}
+                placeholder="email"
+            />
+            <CustomInput
+                register={register("password", {
+                    required: "Обязательное поле",
+                })}
+                type="password"
+                error={errors.password}
+                placeholder="password"
+            />
+            <div className="login-form__footer">
+                <CustomBtn>Войти</CustomBtn>
+                <span onClick={onRegistration} className="login-form__registration">Зарегистрироваться</span>
+            </div>
+        </form>
+    );
 };
 
 export default LoginForm;

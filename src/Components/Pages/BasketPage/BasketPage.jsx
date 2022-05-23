@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteBasketData, getBaskets, updateBasketCount} from "../../../redux/actions";
 import BasketItem from "./BasketItem";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
+import EmptyList from "../../UI/EmptyList/EmptyList";
 
 const BasketPage = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const BasketPage = () => {
 
     return (
         <div className="basket-page">
-            <div className="basket-page__content">
+            {baskets.length > 0 ? <div className="basket-page__content">
                 <div className="basket-list">
                     <h2 className="basket-list__title">Корзина</h2>
                     {baskets.map(basket => <BasketItem basket={basket} changeCountBasket={changeCountBasket}
@@ -52,7 +53,7 @@ const BasketPage = () => {
                         <span className="basket-order__oferta-value">Согласен с условиями Правил пользования торговой площадкой и правилами возврата</span>
                     </div>
                 </div>
-            </div>
+            </div> : <EmptyList text="Ваша корзина пуста"/>}
         </div>
 
     );

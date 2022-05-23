@@ -2,18 +2,16 @@ import React from 'react';
 import "./PageContainer.scss";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {useSelector} from 'react-redux';
-import {authRoutes, publicRoutes} from '../../routes';
-import {MAIN_ROUTE} from '../../utils/consts';
-import MainPage from "./MainPage/MainPage";
-
+import {authRoutes, noAuthRoutes, publicRoutes} from '../../routes';
 const PageContainer = () => {
     const isAuth = useSelector(state => state.app.isAuth)
     return (
         <div className="page-container">
             <Routes>
-                {isAuth && authRoutes.map(({path, Component}) =>
+                {isAuth ? authRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={Component}/>
-                )}
+                ) : noAuthRoutes.map(({path, Component}) =>
+                    <Route key={path} path={path} element={Component}/>)}
 
                 {publicRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={Component}/>

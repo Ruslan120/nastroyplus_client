@@ -17,12 +17,15 @@ export const authRoutes = [
         Component: <FavoritePage/>
     },
 ]
-
-export const publicRoutes = [
+export const noAuthRoutes = [
     {
         path: REGISTRATION_ROUTE,
         Component: <RegistrationPage/>
     },
+]
+
+export const publicRoutes = [
+
     {
         path: MAIN_ROUTE,
         Component: <MainPage/>

@@ -10,6 +10,7 @@ export default class ProductService {
         });
         return response;
     }
+
     static async getProductById(productId) {
         const response = await api.get(`/product/${productId}`);
         return response;
@@ -21,7 +22,7 @@ export default class ProductService {
                 subcategoryId: subcategoryId,
                 _limit: limit,
                 _page: page,
-            }
+            },
         });
         return response;
     }

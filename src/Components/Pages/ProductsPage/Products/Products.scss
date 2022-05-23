@@ -1,15 +1,28 @@
 .products-list {
-  &__header {
-    margin-bottom: 20px;
+  &__header{
+    display: flex;
+    align-items: center;
+    @media (max-width: 660px) {
+      flex-direction: column;
+    }
+  }
+  &__title {
     font-size: 30px;
     font-weight: bold;
+    margin-right: 30px;
+    @media (max-width: 660px) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
   }
   &__items {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     margin: 0px -15px;
     @media (max-width: 660px) {
       margin: 0 -8px;
+      margin-top: 10px;
     }
   }
 }

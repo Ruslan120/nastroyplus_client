@@ -14,7 +14,7 @@ const LoginModal = () => {
 
   return (
     <Modal active={loginActive} setActive={handlerSetIsLogin}>
-      <LoginForm active={loginActive} setActive={handlerSetIsLogin} />
+      <LoginForm active={loginActive} close={handlerSetIsLogin} />
     </Modal>
   );
 };

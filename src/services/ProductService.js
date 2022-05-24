@@ -16,12 +16,14 @@ export default class ProductService {
         return response;
     }
 
-    static async getProductsBySubcategory(subcategoryId, limit, page) {
+    static async getProductsBySubcategory(subcategoryId, limit, page, sort = undefined) {
         const response = await api.get("/product", {
             params: {
                 subcategoryId: subcategoryId,
                 _limit: limit,
                 _page: page,
+                sort: sort.value,
+                order: sort.order
             },
         });
         return response;

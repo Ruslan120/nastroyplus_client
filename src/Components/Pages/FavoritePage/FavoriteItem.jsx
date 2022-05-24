@@ -15,7 +15,7 @@ const FavoriteItem = ({ favorite, deleteHandler }) => {
         className="favorite-item__img"
         src={`${BASE_URL}/images/${favorite.product.image}`}
       ></img>
-      <div className="favorite-item__link">{favorite.product.name}</div>
+      <div className="favorite-item__link" onClick={()=> navigate(`/product/${favorite.product.id}`)}>{favorite.product.name}</div>
       <div className="favorite-item__price">
         <span>{favorite.product.price}</span>
       </div>

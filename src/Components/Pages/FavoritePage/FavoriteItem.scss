@@ -32,6 +32,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    transition: color 0.3s ease 0s;
+    &:hover {
+      color: #cb11ab;
+      cursor: pointer;
+    }
     @media (max-width: 400px){
       margin-top: 10px;
       max-width: 100%;

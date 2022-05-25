@@ -6,14 +6,16 @@ import PageContainer from "./Components/Pages/PageContainer";
 import { useEffect } from "react";
 import AuthService from "./services/AuthService";
 import { useDispatch } from "react-redux";
-import { setIsAuth, setUserData } from "./redux/actions";
+import { setIsAuth, setIsLoaded, setUserData } from "./redux/actions";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(setIsLoaded(true));
     AuthService.isauth().then((response) => {
-        dispatch(setIsAuth(true))
-        dispatch(setUserData(response.data))
+      dispatch(setIsAuth(true));
+      dispatch(setUserData(response.data));
+      dispatch(setIsLoaded(false));
     });
   }, []);
   return (

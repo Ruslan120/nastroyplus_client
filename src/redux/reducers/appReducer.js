@@ -1,8 +1,9 @@
-import { DELETE_USER_DATA, SET_IS_AUTH, SET_USER_DATA,} from "../types";
+import { DELETE_USER_DATA, SET_IS_AUTH, SET_IS_LOADED, SET_USER_DATA,} from "../types";
 
 const initialState = {
   user: {},
   isAuth: false,
+  isLoaded: true,
 };
 function appReducer(state = initialState, action) {
   switch (action.type) {
@@ -10,6 +11,11 @@ function appReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload.userData,
+      };
+      case SET_IS_LOADED:
+      return {
+        ...state,
+        isLoaded: action.payload.isLoaded,
       };
       case DELETE_USER_DATA:
       return {

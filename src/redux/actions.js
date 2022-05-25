@@ -5,6 +5,7 @@ import {
     SET_IS_AUTH,
     SET_IS_OPEN,
     SET_USER_DATA,
+    SET_IS_LOADED,
 } from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
@@ -68,6 +69,14 @@ export const setIsAuth = (isAuth) => {
         type: SET_IS_AUTH,
         payload: {
             isAuth,
+        },
+    };
+};
+export const setIsLoaded = (isLoaded) => {
+    return {
+        type: SET_IS_LOADED,
+        payload: {
+            isLoaded: isLoaded,
         },
     };
 };

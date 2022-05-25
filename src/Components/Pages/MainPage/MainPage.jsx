@@ -1,5 +1,5 @@
 import React from 'react';
-import "./MainPage.scss";
+import s from "./MainPage.module.scss";
 import InterestingProducts from "./InterestingProducts/InterestingProducts";
 import Slider from "./InterestingProducts/Slider";
 
@@ -9,11 +9,9 @@ const pictureData = [{name: "Picture1", img: "https://remontv1click.com/image/ca
     {name: "Picture1", img: "https://remontv1click.com/image/cache/catalog/demo/banners/228720399_17930956__91_1-1140x380-1140x380.jpg"}]
 const MainPage = () => {
     return (
-        <div className="main">
-            <div className="main__content">
+        <div className={s["main"]}>
                 <Slider pictureData={pictureData}/>
                 <InterestingProducts/>
-            </div>
         </div>
     );
 };

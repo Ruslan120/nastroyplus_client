@@ -1,9 +1,9 @@
 import React from "react";
-import "./Favorite-btn.scss";
+import s from "./Favorite-btn.module.scss";
 
 function FavoriteBtn(props) {
     return (
-        <button className="favorite__btn" {...props}>{props.children}</button>
+        <button className={s["favorite__btn"]} {...props}>{props.children}</button>
     );
 }
 

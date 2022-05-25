@@ -3,7 +3,7 @@ import { DELETE_USER_DATA, SET_IS_AUTH, SET_IS_LOADED, SET_USER_DATA,} from "../
 const initialState = {
   user: {},
   isAuth: false,
-  isLoaded: true,
+  isLoaded: false,
 };
 function appReducer(state = initialState, action) {
   switch (action.type) {

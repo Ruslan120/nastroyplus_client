@@ -1,14 +1,12 @@
 import React from 'react';
-import "./ProductsPage.scss";
+import s from "./ProductsPage.module.scss";
 import Products from "./Products/Products";
 
 
 const ProductsPage = () => {
     return (
-        <div className="products">
-            <div className="products__content">
+        <div className={s["products"]}>
                 <Products/>
-            </div>
         </div>
     );
 };

@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
-import "./BasketCounter.scss"
+import s from "./BasketCounter.module.scss"
 
 const BasketCounter = ({count, increment, decrement}) => {
 
     return (
-        <div className="counter">
-            <span className="counter__value">{count}</span>
-            <div className="counter__controls">
-                <span className="counter__up" onClick={increment}><i className="material-icons">expand_less</i></span>
-                {count>1 && <span className="counter__down" onClick={decrement}><i className="material-icons">expand_more</i></span>}
-                
+        <div className={s["counter"]}>
+            <span className={s["counter__value"]}>{count}</span>
+            <div className={s["counter__controls"]}>
+                <span className={s["counter__up"]} onClick={increment}><i className="material-icons">expand_less</i></span>
+                {count>1 && <span className={s["counter__down"]} onClick={decrement}><i className="material-icons">expand_more</i></span>}
             </div>
         </div>
     );

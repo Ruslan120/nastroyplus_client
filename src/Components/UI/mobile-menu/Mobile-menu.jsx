@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "./Mobile-menu.scss";
+import s from "./Mobile-menu.module.scss";
 import MenuItem from "./MenuItem";
 import api from "../../../http";
 import {BASE_URL} from "../../../utils/consts"
@@ -14,16 +14,17 @@ const MobileMenu = ({active, setActive}) => {
         })
     }, [])
     return (
-        <div className={active ? "mobile-menu mobile-menu--active" : "mobile-menu"}>
-            <div className={"mobile-menu__content"}>
-                <div className={"mobile-menu__close"} onClick={() => setActive(prev => !prev)}>
+        <div className={active ? s["mobile-menu"] + " " + s["mobile-menu--active"] : s["mobile-menu"]}>
+            <div className={s["mobile-menu__content"]}>
+                <div className={s["mobile-menu__close"]} onClick={() => setActive(prev => !prev)}>
                     <span className="material-icons">
                         close
                     </span>
                 </div>
-                <div className="mobile-menu__header">Каталог</div>
-                <ul className="mobile-menu__items">
-                    {categoryData.map((category=><MenuItem key={category.id} name={category.name} subcategories={category.subcategories}/>))}
+                <div className={s["mobile-menu__header"]}>Каталог</div>
+                <ul className={s["mobile-menu__items"]}>
+                    {categoryData.map((category => <MenuItem key={category.id} name={category.name}
+                                                             subcategories={category.subcategories}/>))}
                 </ul>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Products.scss";
+import s from "./Products.module.scss";
 import CustomBtn from "../../../UI/custom-btn/Custom-btn";
 import ProductService from "../../../../services/ProductService";
 import ProductItem from "../../../UI/ProductItem/ProductItem";
@@ -38,9 +38,9 @@ const Products = () => {
   }, [page, sort]);
 
   return (
-    <div className="products-list">
-      <div className="products-list__header">
-        <h2 className="products-list__title">Товары по категории</h2>
+    <div className={s["products-list"]}>
+      <div className={s["products-list__header"]}>
+        <h2 className={s["products-list__title"]}>Товары по категории</h2>
         <Sort
           value={sort}
           setValue={(obj) => setSort(obj)}
@@ -48,7 +48,7 @@ const Products = () => {
         />
       </div>
 
-      <div className="products-list__items">
+      <div className={s["products-list__items"]}>
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}

@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import "./Menu.scss";
+import s from "./Menu.module.scss";
 import MobileMenu from "../mobile-menu/Mobile-menu";
 import Blur from "../Blur/Blur";
 import {useDispatch, useSelector} from "react-redux";
@@ -27,17 +27,17 @@ const Menu = () => {
 
     return (
         <div>
-            <div className="menu">
-                <div className="container">
-                    <div className="menu__items">
+            <div className={s["menu"]}>
+                <div className={s["container"]}>
+                    <div className={s["menu__items"]}>
                         <div
-                            className="menu__btn"
+                            className={s["menu__btn"]}
                             onClick={() => setMenuActive((prev) => !prev)}>
                             <span></span>
                         </div>
-                        <div className="menu__logo">Настрой Плюс</div>
+                        <div className={s["menu__logo"]}>Настрой Плюс</div>
 
-                        <div className="menu__links">
+                        <div className={s["menu__links"]}>
                             <MenuLink text={"Главная"} iconName={"home"} onClick={event => navigate(`/`)}/>
                             <MenuLink text={"Обратная связь"} iconName={"feedback"} onClick={event => navigate(`/Feedback`)}/>
                             {isAuth ?<UserMenu/> : <MenuLink text={"Войти"} iconName={"person"}

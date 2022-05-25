@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ProductPage.scss";
+import s from "./ProductPage.module.scss";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
 import FavoriteBtn from "../../UI/favorite-btn/Favorite-btn";
 import ProductAttributes from "../../UI/ProductAttributes/ProductAttributes";
@@ -67,20 +67,20 @@ const ProductPage = () => {
   }, []);
 
   return (
-    <div className="product-page">
-      <h2 className="product-page__title">{productData.name}</h2>
-      <div className="product-page__content">
-        <div className="product-page__image">
+    <div className={s["product-page"]}>
+      <h2 className={s["product-page__title"]}>{productData.name}</h2>
+      <div className={s["product-page__content"]}>
+        <div className={s["product-page__image"]}>
           <img
             src={`${BASE_URL}/images/${productData.image}`}
             alt=""
           />
         </div>
 
-        <div className="product-page__data">
-          <div className="product-page__main">
-            <h3 className="product-page__price">{productData.price}</h3>
-            <div className="product-page__controlls">
+        <div className={s["product-page__data"]}>
+          <div className={s["product-page__main"]}>
+            <h3 className={s["product-page__price"]}>{productData.price}</h3>
+            <div className={s["product-page__controlls"]}>
               {isBasket ? (
                 <CustomBtn onClick={(e) => navigate("/basket")}>
                   В корзине
@@ -105,9 +105,9 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <div className="product-page__description">
-        <h3 className="product-page__title">Описание</h3>
-        <p className="product-page__text">{productData.description}</p>
+      <div className={s["product-page__description"]}>
+        <h3 className={s["product-page__title"]}>Описание</h3>
+        <p className={s["product-page__text"]}>{productData.description}</p>
       </div>
     </div>
   );

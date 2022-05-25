@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Toasts.scss";
+import s from "./Toasts.module.scss";
 import {useSelector} from "react-redux";
 import Toast from "../UI/Toast/Toast";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
@@ -8,8 +8,8 @@ const Toasts = () => {
     const toasts = useSelector((state => state.toast.toasts))
 
     return (
-        <div className="toasts">
-            <div className="toasts__list">
+        <div className={s["toasts"]}>
+            <div className={s["toasts__list"]}>
                 <TransitionGroup>
                     {toasts.map(toast =>
                         <CSSTransition

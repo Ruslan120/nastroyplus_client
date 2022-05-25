@@ -1,5 +1,5 @@
 import {React, useEffect} from "react";
-import "./LoginForm.scss";
+import s from "./LoginForm.module.scss";
 import CustomInput from "../../UI/custom-input/Custom-input";
 import {useForm} from "react-hook-form";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
@@ -33,7 +33,7 @@ const LoginForm = ({active, close, ...props}) => {
     }, [active]);
 
     return (
-        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <form className={s["login-form"]} onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
                 register={register("email", {
                     required: "Обязательное поле",
@@ -49,9 +49,9 @@ const LoginForm = ({active, close, ...props}) => {
                 error={errors.password}
                 placeholder="password"
             />
-            <div className="login-form__footer">
+            <div className={s["login-form__footer"]}>
                 <CustomBtn>Войти</CustomBtn>
-                <span onClick={onRegistration} className="login-form__registration">Зарегистрироваться</span>
+                <span onClick={onRegistration} className={s["login-form__registration"]}>Зарегистрироваться</span>
             </div>
         </form>
     );

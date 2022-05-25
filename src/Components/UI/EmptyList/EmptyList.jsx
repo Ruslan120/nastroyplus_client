@@ -1,11 +1,11 @@
 import React from 'react';
-import "./EmptyList.scss"
+import s from "./EmptyList.module.scss"
 
 const EmptyList = ({text}) => {
     return (
-        <div className="empty-list">
-            <i className="material-icons empty-list__icon">mood_bad</i>
-            <h3 className="empty-list__text">{text}</h3>
+        <div className={s["empty-list"]}>
+            <i className={"material-icons" + " " + s["empty-list__icon"]}>mood_bad</i>
+            <h3 className={s["empty-list__text"]}>{text}</h3>
         </div>
     );
 };

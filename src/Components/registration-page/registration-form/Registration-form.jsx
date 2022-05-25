@@ -1,5 +1,5 @@
 import React from "react";
-import "./Registration-form.scss";
+import s from "./Registration-form.module.scss";
 import { useForm } from "react-hook-form";
 import CustomInput from "../../UI/custom-input/Custom-input";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
@@ -22,7 +22,7 @@ function RegistrationForm() {
   };
 
   return (
-    <form className="registration-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className={s["registration-form"]} onSubmit={handleSubmit(onSubmit)}>
       <CustomInput
         autoFocus={true}
         register={register("email", {

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './BasketPage.scss'
+import s from "./BasketPage.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {deleteBasketData, getBaskets, updateBasketCount} from "../../../redux/actions";
 import BasketItem from "./BasketItem";
@@ -31,26 +31,26 @@ const BasketPage = () => {
     }, [])
 
     return (
-        <div className="basket-page">
-            {baskets.length > 0 ? <div className="basket-page__content">
-                <div className="basket-list">
-                    <h2 className="basket-list__title">Корзина</h2>
+        <div className={s["basket-page"]}>
+            {baskets.length > 0 ? <div className={s["basket-page__content"]}>
+                <div className={s["basket-list"]}>
+                    <h2 className={s["basket-list__title"]}>Корзина</h2>
                     {baskets.map(basket => <BasketItem basket={basket} changeCountBasket={changeCountBasket}
                                                        deleteBasket={deleteBasket}/>)}
                 </div>
-                <div className="basket-order">
-                    <div className="basket-order__price">
-                        <span className="basket-order__price-title">Итого</span>
-                        <span className="basket-order__price-value">{totalPrice}</span>
+                <div className={s["basket-order"]}>
+                    <div className={s["basket-order__price"]}>
+                        <span className={s["basket-order__price-title"]}>Итого</span>
+                        <span className={s["basket-order__price-value"]}>{totalPrice}</span>
                     </div>
-                    <div className="basket-order__count">
-                        <span className="basket-order__count-title">Кол-во товаров</span>
-                        <span className="basket-order__count-value">{totalCount}</span>
+                    <div className={s["basket-order__count"]}>
+                        <span className={s["basket-order__count-title"]}>Кол-во товаров</span>
+                        <span className={s["basket-order__count-value"]}>{totalCount}</span>
                     </div>
                     <CustomBtn>Заказать</CustomBtn>
-                    <div className="basket-order__oferta">
-                        <span className="basket-order__oferta-title"><i className="material-icons">check</i></span>
-                        <span className="basket-order__oferta-value">Согласен с условиями Правил пользования торговой площадкой и правилами возврата</span>
+                    <div className={s["basket-order__oferta"]}>
+                        <span className={s["basket-order__oferta-title"]}><i className="material-icons">check</i></span>
+                        <span className={s["basket-order__oferta-value"]}>Согласен с условиями Правил пользования торговой площадкой и правилами возврата</span>
                     </div>
                 </div>
             </div> : <EmptyList text="Ваша корзина пуста"/>}

@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
-import "./Blur.scss";
+import s from "./Blur.module.scss";
+
 const Blur = ({active, setActive}) => {
-    useEffect(()=>{
-        if(active){
+    useEffect(() => {
+        if (active) {
             document.body.classList.add("no-scroll");
-        }
-        else document.body.classList.remove("no-scroll");
-    },[active])
+        } else document.body.classList.remove("no-scroll");
+    }, [active])
 
 
     return (
-            <div className={ active ? "blur blur--active" : "blur"} onClick={setActive}></div>
+        <div className={active ? s["blur"] + " " + s["blur--active"] : s["blur"]} onClick={setActive}></div>
     );
 };
 

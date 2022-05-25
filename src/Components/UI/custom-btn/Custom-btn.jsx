@@ -1,9 +1,9 @@
 import React from "react";
-import "./Custom-btn.scss";
+import s from "./Custom-btn.module.scss";
 
 function CustomBtn(props) {
     return (
-        <button className="custom__btn" {...props}>{props.children}</button>
+        <button className={s["custom__btn"]} {...props}>{props.children}</button>
     );
 }
 

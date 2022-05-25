@@ -1,14 +1,14 @@
 import React from "react";
-import "./Custom-input.scss";
+import s from "./Custom-input.module.scss";
 
 function CustomInput({ register, error, ...props }) {
   return (
     <div
-      className={error ? "custom-input custom-input--error" : "custom-input"}
+      className={error ? s["custom-input"] + " " + s["custom-input--error"] : s["custom-input"]}
     >
       <input {...register} {...props} />
       {error && (
-        <span className="input-error">
+        <span className={s["input-error"]}>
           <i className="material-icons">error_outline</i>
           {error.message}
         </span>

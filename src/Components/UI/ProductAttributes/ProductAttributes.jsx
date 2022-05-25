@@ -1,20 +1,20 @@
 import React from 'react';
-import "./ProductAttributes.scss";
+import s from "./ProductAttributes.module.scss";
 
 const ProductAttributes = (props) => {
     return (
-        <div className="product-attributes">
-            <h3 className="product-attributes__title">Характеристики</h3>
-            <table className="product-attributes__items">
+        <div className={s["product-attributes"]}>
+            <h3 className={s["product-attributes__title"]}>Характеристики</h3>
+            <table className={s["product-attributes__items"]}>
                 <tbody>
                 {props.attributes.map((attribute, index) =>
-                    <tr key={index} className="product-attributes__item">
-                        <th className="product-attributes__name">
-                            <span className="product-attributes__decore">
+                    <tr key={index} className={s["product-attributes__item"]}>
+                        <th className={s["product-attributes__name"]}>
+                            <span className={s["product-attributes__decore"]}>
                                 <span>{attribute.name}</span>
                             </span>
                         </th>
-                        <td className="product-attributes__value">
+                        <td className={s["product-attributes__value"]}>
                             {attribute.value}
                         </td>
                     </tr>)}

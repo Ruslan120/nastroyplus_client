@@ -15,7 +15,12 @@ const Toasts = () => {
                         <CSSTransition
                             key={toast.id}
                             timeout={500}
-                            classNames="toastTransition"
+                            classNames={{
+                                enterActive: s["toastTransition-enter-active"],
+                                enterDone: s["toastTransition-enter"],
+                                exitActive: s["toastTransition-exit-active"],
+                                exitDone: s["toastTransition-exit"],
+                              }}
                         >
                             <Toast type={toast.type} message={toast.message}/>
                         </CSSTransition>

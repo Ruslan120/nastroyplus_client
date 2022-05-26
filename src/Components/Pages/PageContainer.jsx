@@ -8,7 +8,9 @@ const PageContainer = () => {
   const isLoaded = useSelector((state) => state.app.isLoaded);
   return (
     <div className={s["page-container"]}>
-      {!isLoaded ? <div>Загрузка...</div> : (
+      {!isLoaded ? (
+        <Spinner animation="border" variant="warning" />
+      ) : (
         <AuthRoutes />
       )}
     </div>

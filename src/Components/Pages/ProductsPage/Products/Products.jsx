@@ -5,13 +5,14 @@ import ProductService from "../../../../services/ProductService";
 import ProductItem from "../../../UI/ProductItem/ProductItem";
 import { useSearchParams } from "react-router-dom";
 import Sort from "../../../UI/Sort/Sort";
+import Pagination from "../../../UI/Pagination/Pagination";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
   const subcategoryId = searchParams.get("subcategoryId");
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  const [sort, setSort] = useState({name: "стандарт"});
+  const [sort, setSort] = useState({ name: "стандарт" });
   const limit = 6;
   const totalPages = Math.ceil(totalCount / limit);
   const [page, setPage] = useState(1);
@@ -23,6 +24,15 @@ const Products = () => {
     { value: "updatedAt", name: "Сначала новые", order: "ASC" },
     { value: "updatedAt", name: "Сначала старые", order: "DESC" },
   ];
+  const paginate = (pageNum) => {
+    setPage(pageNum);
+  };
+  const nextPage = () => {
+    setPage((prevState) => ++prevState);
+  };
+  const prevPage = (pageNum) => {
+    setPage((prevState) => --prevState);
+  };
 
   useEffect(() => {
     console.log("один");
@@ -32,7 +42,7 @@ const Products = () => {
       page,
       sort
     ).then((response) => {
-      setProducts((prevState) => [...response.data.products]);
+      setProducts(response.data.products);
       setTotalCount(response.data.count);
     });
   }, [page, sort]);
@@ -43,7 +53,10 @@ const Products = () => {
         <h2 className={s["products-list__title"]}>Товары по категории</h2>
         <Sort
           value={sort}
-          setValue={(obj) => setSort(obj)}
+          setValue={(obj) => {
+            setPage(1);
+            setSort(obj);
+          }}
           sortList={sortlist}
         />
       </div>
@@ -53,11 +66,14 @@ const Products = () => {
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
-      {page < totalPages && (
-        <CustomBtn onClick={(e) => setPage((prevState) => ++prevState)}>
-          Показать еще
-        </CustomBtn>
-      )}
+      <Pagination
+        limit={limit}
+        totalCount={totalCount}
+        currentPage={page}
+        paginate={paginate}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </div>
   );
 };

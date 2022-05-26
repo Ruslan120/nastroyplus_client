@@ -16,6 +16,8 @@
     }
     h3{
       color: #FFFFFF;
+      font-size: 20px;
+      margin-bottom: 0;
     }
   }
 }
@@ -24,6 +26,10 @@
   &__items{
     display: flex;
     flex-direction: column;
+    a{
+      color: #FFFFFF;
+      text-decoration: none;
+    }
   }
 
   &__item{

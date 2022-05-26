@@ -1,15 +1,21 @@
-@import '~normalize.css/normalize';
-@import './reset';
+@import "variables";
+@import "~normalize.css/normalize";
+@import "./reset";
+@import "~bootstrap/scss/bootstrap";
+
 
 @font-face {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   src: local(Jost), url(./fonts/Jost-Regular.ttf) format("tff");
 }
 
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
-*{
+* {
   box-sizing: border-box;
+}
+ul{
+  padding-left: 0;
 }

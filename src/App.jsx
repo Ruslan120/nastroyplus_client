@@ -1,7 +1,6 @@
 import Menu from "./Components/UI/Menu/Menu";
 import Toasts from "./Components/Toasts/Toasts";
 import LoginModal from "./Components/LoginModal/LoginModal";
-
 import PageContainer from "./Components/Pages/PageContainer";
 import {useEffect} from "react";
 import AuthService from "./services/AuthService";

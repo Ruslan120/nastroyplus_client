@@ -5,4 +5,5 @@ export const PRODUCT_ROUTE = "/product/:productId";
 export const FAVORITE_ROUTE = "/favorite";
 export const BASKET_ROUTE = "/basket";
 export const BASE_URL = "https://nastroyplus-server.herokuapp.com";
+// export const BASE_URL = "http://localhost:7000";
 export const CLIENT_URL = "http://localhost:3000";

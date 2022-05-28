@@ -4,7 +4,16 @@ import MainPage from "./Components/Pages/MainPage/MainPage"
 import ProductPage from "./Components/Pages/ProductPage/ProductPage"
 import ProductsPage from "./Components/Pages/ProductsPage/ProductsPage"
 import RegistrationPage from "./Components/registration-page/Registration-page"
-import { BASKET_ROUTE, FAVORITE_ROUTE, MAIN_ROUTE, PRODUCTS_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE } from "./utils/consts"
+import {
+    BASKET_ROUTE,
+    FAVORITE_ROUTE,
+    MAIN_ROUTE,
+    PRODUCTS_ROUTE,
+    PRODUCT_ROUTE,
+    REGISTRATION_ROUTE,
+    ORDER_ROUTE
+} from "./utils/consts"
+import OrderPage from "./Components/Pages/OrderPage/OrderPage";
 
 
 export const authRoutes = [
@@ -15,6 +24,10 @@ export const authRoutes = [
     {
         path: FAVORITE_ROUTE,
         Component: <FavoritePage/>
+    },
+    {
+        path: ORDER_ROUTE,
+        Component: <OrderPage/>
     },
 ]
 export const noAuthRoutes = [

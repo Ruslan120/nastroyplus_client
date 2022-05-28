@@ -20,3 +20,7 @@ export const SET_BASKETS = "SET_BASKETS"
 export const DELETE_BASKET = "DELETE_BASKET"
 export const SET_BASKET_COUNT = "SET_BASKET_COUNT"
 
+
+
+export const SET_ORDER_OPEN = "SET_ORDER_OPEN"
+export const SET_ORDERS = "SET_ORDERS"

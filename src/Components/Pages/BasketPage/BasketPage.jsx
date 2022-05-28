@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import s from "./BasketPage.module.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {deleteBasketData, getBaskets, updateBasketCount} from "../../../redux/actions";
+import {deleteBasketData, getBaskets, setOrderForm, updateBasketCount} from "../../../redux/actions";
 import BasketItem from "./BasketItem";
 import CustomBtn from "../../UI/custom-btn/Custom-btn";
 import EmptyList from "../../UI/EmptyList/EmptyList";
@@ -21,6 +21,9 @@ const BasketPage = () => {
 
     const changeCountBasket = (basketId, count) => {
         dispatch(updateBasketCount(basketId, count))
+    }
+    const openOrderModal = ()=>{
+        dispatch(setOrderForm(true))
     }
     const deleteBasket = (basketId) => {
         dispatch(deleteBasketData(basketId))
@@ -47,7 +50,7 @@ const BasketPage = () => {
                         <span className={s["basket-order__count-title"]}>Кол-во товаров</span>
                         <span className={s["basket-order__count-value"]}>{totalCount}</span>
                     </div>
-                    <CustomBtn>Заказать</CustomBtn>
+                    <CustomBtn onClick={openOrderModal}>Заказать</CustomBtn>
                     <div className={s["basket-order__oferta"]}>
                         <span className={s["basket-order__oferta-title"]}><i className="material-icons">check</i></span>
                         <span className={s["basket-order__oferta-value"]}>Согласен с условиями Правил пользования торговой площадкой и правилами возврата</span>

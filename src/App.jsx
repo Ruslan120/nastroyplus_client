@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import AuthService from "./services/AuthService";
 import {useDispatch} from "react-redux";
 import {setIsAuth, setIsLoaded, setUserData} from "./redux/actions";
+import OrderModal from "./Components/OrderModal/OrderModal";
 
 function App() {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
             <Menu/>
             <Toasts/>
             <LoginModal/>
+            <OrderModal/>
             <PageContainer/>
         </div>
     );

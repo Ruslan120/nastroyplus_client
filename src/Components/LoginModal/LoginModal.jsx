@@ -8,7 +8,6 @@ const LoginModal = () => {
   const dispatch = useDispatch();
 
   const handlerSetIsLogin = () => {
-      console.log("sdfs")
     dispatch(setLoginForm(false));
   };
 

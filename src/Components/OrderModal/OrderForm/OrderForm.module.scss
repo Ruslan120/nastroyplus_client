@@ -1,0 +1,16 @@
+.order-form{
+  z-index: 2000;
+  &__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__registration{
+    &:hover{
+      color: #e48f13;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

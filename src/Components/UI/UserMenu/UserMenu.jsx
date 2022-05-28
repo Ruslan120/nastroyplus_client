@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './UserMenu.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {logoutAction} from "../../../redux/actions";
@@ -31,6 +31,10 @@ const UserMenu = () => {
                         <div className={s["user-dropdown__item"]} onClick={event => navigate('/favorite')}>
                             <i className={"material-icons" + " " + s["user-dropdown__icon"]}>favorite_border</i>
                             <span>Избранное</span>
+                        </div>
+                        <div className={s["user-dropdown__item"]} onClick={event => navigate('/order')}>
+                            <i className={"material-icons" + " " + s["user-dropdown__icon"]}>content_paste</i>
+                            <span>Заказы</span>
                         </div>
                     </div>
                     <div className={s["user-dropdown__logout"]}>

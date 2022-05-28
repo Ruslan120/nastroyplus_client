@@ -5,12 +5,13 @@ import {
     SET_IS_AUTH,
     SET_IS_OPEN,
     SET_USER_DATA,
-    SET_IS_LOADED,
+    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS,
 } from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
 import FavoriteService from "../services/FavoriteService";
 import BasketService from "../services/BasketService";
+import OrderService from "../services/OrderService";
 
 export const addToastTime = (type, message) => {
     return (dispatch) => {
@@ -50,6 +51,8 @@ export const setLoginForm = (isOpen) => {
         },
     };
 };
+
+
 
 export const setUserData = (userData) => {
     return {
@@ -217,6 +220,37 @@ export const updateBasketCount = (basketId, count) => {
         try {
             const response = await BasketService.updateBasketCount(basketId, count)
             dispatch(updateCountBasket(basketId, count))
+
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+
+
+export const setOrderForm = (isOpen) => {
+    return {
+        type: SET_ORDER_OPEN,
+        payload: {
+            isOpen,
+        },
+    };
+};
+
+export const setOrders = (orders) => {
+    return {
+        type: SET_ORDERS,
+        payload: {
+            orders: orders,
+        },
+    };
+};
+
+export const getOrders = () => {
+    return async (dispatch) => {
+        try {
+            const response = await OrderService.getOrders();
+            dispatch(setOrders(response.data))
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));

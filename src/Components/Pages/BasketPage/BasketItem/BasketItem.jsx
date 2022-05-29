@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from "./BasketItem.module.scss"
-import BasketCounter from "./BasketCounter";
-import {BASE_URL} from "../../../utils/consts"
+import BasketCounter from "../BasketCounter/BasketCounter";
+import {BASE_URL} from "../../../../utils/consts"
 import { useNavigate } from 'react-router-dom';
 
 const BasketItem = ({basket, changeCountBasket, deleteBasket}) => {

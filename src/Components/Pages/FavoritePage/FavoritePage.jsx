@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import s from './FavoritePage.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFavorite, getFavorites} from "../../../redux/actions";
-import FavoriteItem from "./FavoriteItem";
+import FavoriteItem from "./FavoriteItem/FavoriteItem";
 import EmptyList from "../../UI/EmptyList/EmptyList";
 
 

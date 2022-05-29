@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import s from './OrderPage.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {getOrders} from "../../../redux/actions";
-import OrderItem from "./OrderItem";
+import OrderItem from "./OrderItem/OrderItem";
 import EmptyList from "../../UI/EmptyList/EmptyList";
 
 
@@ -21,7 +21,6 @@ const OrderPage = () => {
                     {orders.map(order => <OrderItem order={order}/>)}
                 </div>
             </div> : <EmptyList text="У вас нет заказов"/>}
-
         </div>
     );
 };

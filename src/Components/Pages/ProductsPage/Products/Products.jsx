@@ -14,7 +14,6 @@ const Products = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [sort, setSort] = useState({ name: "стандарт" });
   const limit = 6;
-  const totalPages = Math.ceil(totalCount / limit);
   const [page, setPage] = useState(1);
   console.log();
 
@@ -30,7 +29,7 @@ const Products = () => {
   const nextPage = () => {
     setPage((prevState) => ++prevState);
   };
-  const prevPage = (pageNum) => {
+  const prevPage = () => {
     setPage((prevState) => --prevState);
   };
 

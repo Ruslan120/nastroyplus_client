@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./FavoriteItem.module.scss";
-import { BASE_URL } from "../../../utils/consts";
+import { BASE_URL } from "../../../../utils/consts";
 
 const FavoriteItem = ({ favorite, deleteHandler }) => {
   const navigate = useNavigate();

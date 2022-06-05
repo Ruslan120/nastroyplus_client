@@ -1,8 +1,11 @@
 import api from "../http";
 
 export default class OrderService {
-  static async createOrder() {
-    return api.post("/order");
+  static async createOrder(address, phone) {
+    return api.post("/order",{
+      address: address,
+      phone: phone,
+    });
   }
 
   static async getOrders() {

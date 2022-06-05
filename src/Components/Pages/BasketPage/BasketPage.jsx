@@ -5,10 +5,12 @@ import {deleteBasketData, getBaskets, setOrderForm, updateBasketCount} from "../
 import BasketItem from "./BasketItem/BasketItem";
 import EmptyList from "../../UI/EmptyList/EmptyList";
 import BasketOrder from "./BasketOrder/BasketOrder";
+import Spinner from "react-bootstrap/Spinner";
 
 const BasketPage = () => {
     const dispatch = useDispatch();
     const baskets = useSelector(state => state.basket.baskets);
+    const isFetching = useSelector(state => state.app.isFetching);
 
     const totalPrice = baskets.reduce((acum, basket) => {
         return (acum + +(basket.count * basket.product.price));
@@ -22,7 +24,7 @@ const BasketPage = () => {
     const changeCountBasket = (basketId, count) => {
         dispatch(updateBasketCount(basketId, count))
     }
-    const openOrderModal = ()=>{
+    const openOrderModal = () => {
         dispatch(setOrderForm(true))
     }
     const deleteBasket = (basketId) => {
@@ -34,16 +36,20 @@ const BasketPage = () => {
     }, [])
 
     return (
-        <div className={s["basket-page"]}>
-            {baskets.length > 0 ? <div className={s["basket-page__content"]}>
-                <div className={s["basket-list"]}>
-                    <h2 className={s["basket-list__title"]}>Корзина</h2>
-                    {baskets.map(basket => <BasketItem basket={basket} changeCountBasket={changeCountBasket}
-                                                       deleteBasket={deleteBasket}/>)}
-                </div>
-                <BasketOrder totalPrice={totalPrice} totalCount={totalCount} makeOrder={openOrderModal}/>
-            </div> : <EmptyList text="Ваша корзина пуста"/>}
+        <div>
+            {!isFetching ? <div className={s["basket-page"]}>
+                {baskets.length > 0 ? <div className={s["basket-page__content"]}>
+                    <div className={s["basket-list"]}>
+                        <h2 className={s["basket-list__title"]}>Корзина</h2>
+                        {baskets.map(basket => <BasketItem basket={basket} changeCountBasket={changeCountBasket}
+                                                           deleteBasket={deleteBasket}/>)}
+                    </div>
+                    <BasketOrder totalPrice={totalPrice} totalCount={totalCount} makeOrder={openOrderModal}/>
+                </div> : <EmptyList text="Ваша корзина пуста"/>}
+            </div> : <Spinner animation="border" variant="success"/>}
         </div>
+
+
     );
 };
 

@@ -1,9 +1,10 @@
-import { DELETE_USER_DATA, SET_IS_AUTH, SET_IS_LOADED, SET_USER_DATA,} from "../types";
+import {DELETE_USER_DATA, SET_IS_AUTH, SET_IS_FETCHING, SET_IS_LOADED, SET_USER_DATA,} from "../types";
 
 const initialState = {
   user: {},
   isAuth: false,
   isLoaded: false,
+  isFetching: false,
 };
 function appReducer(state = initialState, action) {
   switch (action.type) {
@@ -26,6 +27,11 @@ function appReducer(state = initialState, action) {
       return {
         ...state,
         isAuth: action.payload.isAuth,
+      };
+    case SET_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
       };
     default:
       return state;

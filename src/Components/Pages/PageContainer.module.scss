@@ -1,9 +1,10 @@
 .page-container{
   padding: 16px 15px;
   max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 88px;
-
+  flex: 1 0 auto;
   @media (max-width: 758px) {
     margin-top: 60px;
     

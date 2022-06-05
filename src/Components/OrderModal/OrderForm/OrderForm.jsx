@@ -19,7 +19,8 @@ const OrderForm = ({active, close, ...props}) => {
     const dispatch = useDispatch();
     const onSubmit = async (data) => {
         try {
-            const response = await OrderService.createOrder();
+            console.log(data);
+            const response = await OrderService.createOrder(data.address, data.phone);
             dispatch(addToastTime("success", `Заказ на сумму: ${response.data.totalPrice} зарегистрирован`));
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
@@ -31,22 +32,17 @@ const OrderForm = ({active, close, ...props}) => {
         }
     };
     useEffect(() => {
-        setFocus("email");
+        setFocus("address");
     }, [active]);
 
     return (
         <form className={s["order-form"]} onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
-                register={register("email", {
+                register={register("address", {
                     required: "Обязательное поле",
-                    pattern: {
-                        value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/,
-                        message: "Введите корректный email",
-                    },
                 })}
-
-                error={errors.email}
-                placeholder="email"
+                error={errors.address}
+                placeholder="Адресс доставки"
             />
             <CustomInput
                 register={register("phone", {
@@ -58,7 +54,7 @@ const OrderForm = ({active, close, ...props}) => {
                 })}
 
                 error={errors.phone}
-                placeholder="phone"
+                placeholder="Телефон"
             />
             <div className={s["order-form__footer"]}>
                 <CustomBtn>Оформить заказ</CustomBtn>

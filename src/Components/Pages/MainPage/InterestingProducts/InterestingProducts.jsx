@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import s from "./InterestingProducts.module.scss";
-import CustomBtn from "../../../UI/custom-btn/Custom-btn";
 import ProductService from "../../../../services/ProductService";
 import ProductItem from "../../../UI/ProductItem/ProductItem";
 import Pagination from "../../../UI/Pagination/Pagination";
@@ -24,7 +23,7 @@ const InterestingProducts = () => {
 
 
   useEffect(() => {
-    ProductService.getInterestingProduct(limit, page).then((response) => {
+    ProductService.getAllProduct(limit, page).then((response) => {
       setProducts(response.data.products);
       setTotalCount(response.data.count);
     });

@@ -8,8 +8,15 @@
   font-family: "Jost", sans-serif;
   src: local(Jost), url(./fonts/Jost-Regular.ttf) format("tff");
 }
+html {
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
 
 body {
+  height: 100%;
   font-family: "Jost", sans-serif;
 }
 

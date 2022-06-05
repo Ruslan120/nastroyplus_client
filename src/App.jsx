@@ -1,4 +1,4 @@
-import Menu from "./Components/UI/Menu/Menu";
+import Menu from "./Components/Menu/Menu";
 import Toasts from "./Components/Toasts/Toasts";
 import LoginModal from "./Components/LoginModal/LoginModal";
 import PageContainer from "./Components/Pages/PageContainer";
@@ -7,6 +7,8 @@ import AuthService from "./services/AuthService";
 import {useDispatch} from "react-redux";
 import {setIsAuth, setIsLoaded, setUserData} from "./redux/actions";
 import OrderModal from "./Components/OrderModal/OrderModal";
+import s from "./App.module.scss"
+import Footer from "./Components/Footer/Footer";
 
 function App() {
     const dispatch = useDispatch();
@@ -19,12 +21,13 @@ function App() {
         });
     }, []);
     return (
-        <div>
+        <div className={s["app"]}>
             <Menu/>
             <Toasts/>
             <LoginModal/>
             <OrderModal/>
             <PageContainer/>
+            <Footer/>
         </div>
     );
 }

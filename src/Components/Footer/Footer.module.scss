@@ -1,0 +1,56 @@
+.footer {
+  background-color: #c57b0d;
+  padding: 20px 0;
+  color: white;
+
+  &__content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      
+    }
+  }
+
+  &__aboutUs {
+    margin-right: 20px;
+    width: 40%;
+    @media (max-width: 1000px) {
+      width: 100%;
+      margin-right: 0;
+    }
+
+  }
+
+  &__aboutUs-text {
+
+
+  }
+
+  &__contactUs {
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+
+  }
+
+  &__contactUs-email {
+  }
+  &__contactUs-phone {
+  padding: 0;
+  }
+
+  &__contactUs-adress {
+  padding: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1600px;
+  padding: 0 15px;
+}

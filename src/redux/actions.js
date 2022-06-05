@@ -5,7 +5,7 @@ import {
     SET_IS_AUTH,
     SET_IS_OPEN,
     SET_USER_DATA,
-    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS,
+    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS, SET_IS_FETCHING,
 } from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
@@ -84,6 +84,17 @@ export const setIsLoaded = (isLoaded) => {
     };
 };
 
+export const setIsFetching= (isFetching) => {
+    return {
+        type: SET_IS_FETCHING,
+        payload: {
+            isFetching: isFetching,
+        },
+    };
+};
+
+
+
 export const loginAction = (email, password) => {
     return async (dispatch) => {
         try {
@@ -144,11 +155,14 @@ export const deleteFavoriteData = (productId) => {
 export const getFavorites = () => {
     return async (dispatch) => {
         try {
+            dispatch(setIsFetching(true));
             const response = await FavoriteService.myFavorites();
             dispatch(setFavorites(response.data))
+            dispatch(setIsFetching(false));
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
+            dispatch(setIsFetching(false));
         }
     };
 };
@@ -195,11 +209,14 @@ export const updateCountBasket = (basketId, count) => {
 export const getBaskets = () => {
     return async (dispatch) => {
         try {
+            dispatch(setIsFetching(true));
             const response = await BasketService.myBaskets();
             dispatch(setBaskets(response.data))
+            dispatch(setIsFetching(false));
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
+            dispatch(setIsFetching(false));
         }
     };
 };
@@ -249,11 +266,14 @@ export const setOrders = (orders) => {
 export const getOrders = () => {
     return async (dispatch) => {
         try {
+            dispatch(setIsFetching(true));
             const response = await OrderService.getOrders();
             dispatch(setOrders(response.data))
+            dispatch(setIsFetching(false));
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
+            dispatch(setIsFetching(false));
         }
     };
 };

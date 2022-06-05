@@ -1,13 +1,13 @@
 import {React, useState} from "react";
 import s from "./Menu.module.scss";
-import MobileMenu from "../mobile-menu/Mobile-menu";
-import Blur from "../Blur/Blur";
+import MobileMenu from "../UI/mobile-menu/Mobile-menu";
+import Blur from "../UI/Blur/Blur";
 import {useDispatch, useSelector} from "react-redux";
 import {
     setLoginForm,
-} from "../../../redux/actions";
+} from "../../redux/actions";
 import {useNavigate} from "react-router-dom";
-import UserMenu from "../UserMenu/UserMenu";
+import UserMenu from "../UI/UserMenu/UserMenu";
 import MenuLink from "./MenuLink";
 
 
@@ -39,9 +39,8 @@ const Menu = () => {
 
                         <div className={s["menu__links"]}>
                             <MenuLink text={"Главная"} iconName={"home"} onClick={event => navigate(`/`)}/>
-                            <MenuLink text={"Обратная связь"} iconName={"feedback"} onClick={event => navigate(`/Feedback`)}/>
-                            {isAuth ?<UserMenu/> : <MenuLink text={"Войти"} iconName={"person"}
-                                onClick={handlerLogin}/>
+                            {isAuth ? <UserMenu/> : <MenuLink text={"Войти"} iconName={"person"}
+                                                              onClick={handlerLogin}/>
                             }
                         </div>
                     </div>

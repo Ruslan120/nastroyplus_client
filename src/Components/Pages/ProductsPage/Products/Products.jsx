@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import s from "./Products.module.scss";
-import CustomBtn from "../../../UI/custom-btn/Custom-btn";
 import ProductService from "../../../../services/ProductService";
 import ProductItem from "../../../UI/ProductItem/ProductItem";
 import { useSearchParams } from "react-router-dom";

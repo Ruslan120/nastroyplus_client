@@ -1,7 +1,7 @@
 import api from "../http";
 
 export default class ProductService {
-    static async getInterestingProduct(limit, page) {
+    static async getAllProduct(limit, page) {
         const response = await api.get("/product", {
             params: {
                 _limit: limit,

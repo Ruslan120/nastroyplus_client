@@ -12,7 +12,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [sort, setSort] = useState({ name: "стандарт" });
-  const limit = 6;
+  const limit = 12;
   const [page, setPage] = useState(1);
   console.log();
 

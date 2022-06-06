@@ -8,7 +8,6 @@ const InterestingProducts = () => {
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const limit = 12;
-  const totalPages = Math.ceil(totalCount / limit);
   const [page, setPage] = useState(1);
 
   const paginate = (pageNum) => {

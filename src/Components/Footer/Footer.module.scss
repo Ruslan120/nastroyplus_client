@@ -2,6 +2,12 @@
   background-color: #474645;
   padding: 20px 0;
   color: white;
+  @media (max-width: 1000px) {
+    font-size: 13px;
+  }
+  @media (max-width: 536px) {
+    font-size: 10px;
+  }
 
   &__content {
     display: flex;
@@ -32,6 +38,7 @@
   &__contactUs {
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
     @media (max-width: 1000px) {
       width: 100%;
     }

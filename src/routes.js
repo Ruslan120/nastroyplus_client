@@ -11,9 +11,10 @@ import {
     PRODUCTS_ROUTE,
     PRODUCT_ROUTE,
     REGISTRATION_ROUTE,
-    ORDER_ROUTE
+    ORDER_ROUTE, SEARCH
 } from "./utils/consts"
 import OrderPage from "./Components/Pages/OrderPage/OrderPage";
+import SearchPage from "./Components/Pages/SearchPage/SearchPage";
 
 
 export const authRoutes = [
@@ -50,5 +51,9 @@ export const publicRoutes = [
     {
         path: PRODUCT_ROUTE,
         Component: <ProductPage/>
+    },
+    {
+        path: SEARCH,
+        Component: <SearchPage/>
     },
 ]

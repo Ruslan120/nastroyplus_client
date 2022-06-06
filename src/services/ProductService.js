@@ -28,4 +28,15 @@ export default class ProductService {
         });
         return response;
     }
+
+    static async searchProducts(serchText, limit, page) {
+        const response = await api.get("/search", {
+            params: {
+                searchText: serchText,
+                _limit: limit,
+                _page: page,
+            },
+        });
+        return response;
+    }
 }

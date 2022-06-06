@@ -14,7 +14,6 @@ const Products = () => {
   const [sort, setSort] = useState({ name: "стандарт" });
   const limit = 12;
   const [page, setPage] = useState(1);
-  console.log();
 
   const sortlist = [
     { value: "price", name: "Цена по возрастанию", order: "ASC" },

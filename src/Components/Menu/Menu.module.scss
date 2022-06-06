@@ -57,6 +57,31 @@
     line-height: 20px;
     transition: color 0.3s ease 0s;
   }
+  &__search{
+    @media (max-width: 570px) {
+      position: fixed;
+      top: 100px;
+      right: 0;
+      i{
+        color: #e48f13;
+        :hover{
+          color: #e48f13;
+        }
+      }
+    }
+    :first-child{
+      margin-bottom: 0;
+    }
+    display: flex;
+    align-items: center;
+    i{
+      font-size: 30px;
+      &:hover{
+        cursor: pointer;
+        color: #FFFFFF;
+      }
+    }
+  }
 
   @media (max-width: 758px) {
     &__logo {

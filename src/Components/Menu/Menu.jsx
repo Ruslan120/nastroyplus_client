@@ -9,6 +9,8 @@ import {
 import {useNavigate} from "react-router-dom";
 import UserMenu from "../UI/UserMenu/UserMenu";
 import MenuLink from "./MenuLink";
+import CustomInput from "../UI/custom-input/Custom-input";
+import {useForm} from "react-hook-form";
 
 
 const Menu = () => {
@@ -16,13 +18,27 @@ const Menu = () => {
     const isAuth = useSelector((state) => state.app.isAuth);
     const [menuActive, setMenuActive] = useState(false);
     const dispatch = useDispatch();
+    const {
+        register,
+        getValues,
+        resetField,
+    } = useForm({mode: "onBlur"});
 
     const handlerLogin = () => {
         dispatch(setLoginForm(true));
     };
+    const search = () => {
+        const searchText = getValues().search;
+        if(searchText != ""){
+            navigate(`/search/${searchText}`)
+            resetField('search');
+        }
+
+    };
     const handlerBlur = () => {
         setMenuActive((prev) => !prev);
     };
+
 
 
     return (
@@ -37,7 +53,13 @@ const Menu = () => {
                         </div>
                         <div className={s["menu__logo"]}>Настрой Плюс</div>
 
+
                         <div className={s["menu__links"]}>
+                            <div className={s["menu__search"]}>
+                                <CustomInput register={register("search")} placeholder="Поиск"/>
+                                <i onClick={search} className={"material-icons"}>search</i>
+                            </div>
+
                             <MenuLink text={"Главная"} iconName={"home"} onClick={event => navigate(`/`)}/>
                             {isAuth ? <UserMenu/> : <MenuLink text={"Войти"} iconName={"person"}
                                                               onClick={handlerLogin}/>

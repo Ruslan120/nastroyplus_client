@@ -59,6 +59,7 @@
   }
   &__search{
     @media (max-width: 570px) {
+      display: none;
       position: fixed;
       top: 100px;
       right: 0;

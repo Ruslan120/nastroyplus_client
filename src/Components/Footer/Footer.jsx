@@ -12,7 +12,7 @@ const Footer = () => {
                         </p>
                     </div>
                     <div className={s["footer__contactUs"]}>
-                        <span className={s["footer__contactUs-email"]}>Наша почта: nastroyplusorganisation@gmail.com</span>
+                        <span className={s["footer__contactUs-email"]}>Наша почта: nastroyplusorganization@mail.ru</span>
                         <span className={s["footer__contactUs-phone"]}>Телефон: +7 950 432 23 43</span>
                         <span className={s["footer__contactUs-adress"]}>Адрес: г.Курск, ул. Пушкина, д43, офис2</span>
                     </div>

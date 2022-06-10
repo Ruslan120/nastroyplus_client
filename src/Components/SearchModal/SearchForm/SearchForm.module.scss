@@ -1,0 +1,8 @@
+.search-form{
+  z-index: 2000;
+  &__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

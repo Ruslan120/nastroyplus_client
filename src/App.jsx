@@ -9,6 +9,8 @@ import {setIsAuth, setIsLoaded, setUserData} from "./redux/actions";
 import OrderModal from "./Components/OrderModal/OrderModal";
 import s from "./App.module.scss"
 import Footer from "./Components/Footer/Footer";
+import MobileSearch from "./Components/UI/mobile-search/MobileSearch";
+import SearchModal from "./Components/SearchModal/SearchModal";
 
 function App() {
     const dispatch = useDispatch();
@@ -23,6 +25,8 @@ function App() {
     return (
         <div className={s["app"]}>
             <Menu/>
+            <MobileSearch/>
+            <SearchModal/>
             <Toasts/>
             <LoginModal/>
             <OrderModal/>

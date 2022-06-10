@@ -9,7 +9,6 @@ import {useNavigate} from "react-router-dom";
 
 const LoginForm = ({active, close, ...props}) => {
     const navigate = useNavigate();
-    console.log(props)
     const {
         register,
         handleSubmit,

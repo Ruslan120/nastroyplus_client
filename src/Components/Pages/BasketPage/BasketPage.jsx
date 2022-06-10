@@ -41,7 +41,7 @@ const BasketPage = () => {
                 {baskets.length > 0 ? <div className={s["basket-page__content"]}>
                     <div className={s["basket-list"]}>
                         <h2 className={s["basket-list__title"]}>Корзина</h2>
-                        {baskets.map(basket => <BasketItem basket={basket} changeCountBasket={changeCountBasket}
+                        {baskets.map(basket => <BasketItem basket={basket} key={basket.id} changeCountBasket={changeCountBasket}
                                                            deleteBasket={deleteBasket}/>)}
                     </div>
                     <BasketOrder totalPrice={totalPrice} totalCount={totalCount} makeOrder={openOrderModal}/>

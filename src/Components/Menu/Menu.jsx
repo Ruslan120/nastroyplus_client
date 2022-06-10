@@ -29,7 +29,7 @@ const Menu = () => {
     };
     const search = () => {
         const searchText = getValues().search;
-        if(searchText != ""){
+        if(searchText != "" && searchText != undefined){
             navigate(`/search/${searchText}`)
             resetField('search');
         }

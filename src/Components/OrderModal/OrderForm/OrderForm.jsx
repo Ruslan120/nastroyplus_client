@@ -8,7 +8,6 @@ import {addToastTime, getBaskets} from "../../../redux/actions";
 import OrderService from "../../../services/OrderService";
 
 const OrderForm = ({active, close, ...props}) => {
-    console.log(props)
     const {
         register,
         handleSubmit,
@@ -19,7 +18,6 @@ const OrderForm = ({active, close, ...props}) => {
     const dispatch = useDispatch();
     const onSubmit = async (data) => {
         try {
-            console.log(data);
             const response = await OrderService.createOrder(data.address, data.phone);
             dispatch(addToastTime("success", `Заказ на сумму: ${response.data.totalPrice} зарегистрирован`));
         } catch (e) {

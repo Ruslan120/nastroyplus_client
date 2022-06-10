@@ -4,6 +4,8 @@ export const DELETE_TOAST = "DELETE_TOAST"
 
 
 export const SET_IS_OPEN = "SET_IS_OPEN"
+export const SET_IS_SEARCH = "SET_IS_SEARCH"
+
 
 
 export const SET_USER_DATA = "SET_USER_DATA"

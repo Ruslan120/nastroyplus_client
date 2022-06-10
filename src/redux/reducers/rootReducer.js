@@ -6,6 +6,7 @@ import favoriteReducer from "./favoriteReducer";
 import basketReducer from "./basketReducer";
 import orderFormReducer from "./orderFormReducer";
 import orderReducer from "./orderReducer";
+import searchFormReducer from "./searchFormReducer";
 
 
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     app: appReducer,
     toast: toastReducer,
     loginForm: loginFormReducer,
+    searchForm: searchFormReducer,
     orderForm: orderFormReducer,
     favorites: favoriteReducer,
     basket: basketReducer,

@@ -21,7 +21,7 @@ const OrderPage = () => {
                 {reverseOrders.length > 0 ? <div className={s["order-page__content"]}>
                     <div className={s["order-page__items"]}>
                         <h2 className={s["order-page__title"]}>Ваши заказы</h2>
-                        {reverseOrders.map(order => <OrderItem order={order}/>)}
+                        {reverseOrders.map(order => <OrderItem key={order.id} order={order}/>)}
                     </div>
                 </div> : <EmptyList text="У вас нет заказов"/>}
             </div> : <Spinner animation="border" variant="success"/>}

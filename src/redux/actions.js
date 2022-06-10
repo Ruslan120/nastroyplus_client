@@ -4,6 +4,7 @@ import {
     DELETE_USER_DATA, SET_BASKET_COUNT, SET_BASKETS, SET_FAVORITES,
     SET_IS_AUTH,
     SET_IS_OPEN,
+    SET_IS_SEARCH,
     SET_USER_DATA,
     SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS, SET_IS_FETCHING,
 } from "./types";
@@ -48,6 +49,14 @@ export const setLoginForm = (isOpen) => {
         type: SET_IS_OPEN,
         payload: {
             isOpen,
+        },
+    };
+};
+export const setSearchForm = (isSearch) => {
+    return {
+        type: SET_IS_SEARCH,
+        payload: {
+            isSearch,
         },
     };
 };

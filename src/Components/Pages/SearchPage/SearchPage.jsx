@@ -12,9 +12,6 @@ const SearchPage = () => {
     const [totalCount, setTotalCount] = useState(0);
     const limit = 12;
     const [page, setPage] = useState(1);
-    const productCount = searchProducts.length;
-    console.log("sgdfg", productCount)
-
     const paginate = (pageNum) => {
         setPage(pageNum);
     };
@@ -48,7 +45,7 @@ const SearchPage = () => {
                 ))}
             </div>
             {
-                productCount >= limit && <Pagination
+                totalCount >= limit && <Pagination
                     limit={limit}
                     totalCount={totalCount}
                     currentPage={page}

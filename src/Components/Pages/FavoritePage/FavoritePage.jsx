@@ -25,7 +25,7 @@ const FavoritePage = () => {
                     <div className={s["favorite-page__items"]}>
                         <h2 className={s["favorite-page__title"]}>Избранные товары</h2>
                         {favorites.map(favorite => <FavoriteItem favorite={favorite}
-                                                                 deleteHandler={() => deleteFromFavoriteHandler(favorite.productId)}/>)}
+                                                                 deleteHandler={() => deleteFromFavoriteHandler(favorite.id)}/>)}
                     </div>
                 </div> : <EmptyList text="У вас нет избранных"/>}
             </div> : <Spinner animation="border" variant="success"/>}

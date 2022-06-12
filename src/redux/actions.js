@@ -152,11 +152,11 @@ export const setFavorites = (favorites) => {
         },
     };
 };
-export const deleteFavoriteData = (productId) => {
+export const deleteFavoriteData = (favoriteId) => {
     return {
         type: DELETE_FAVORITE,
         payload: {
-            productId: productId,
+            favoriteId: favoriteId,
         },
     };
 };
@@ -175,11 +175,11 @@ export const getFavorites = () => {
         }
     };
 };
-export const deleteFavorite = (productId) => {
+export const deleteFavorite = (favoriteId) => {
     return async (dispatch) => {
         try {
-            const response = await FavoriteService.deleteFromFavorite(productId)
-            dispatch(deleteFavoriteData(productId))
+            const response = await FavoriteService.deleteFromFavorite(favoriteId)
+            dispatch(deleteFavoriteData(favoriteId))
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));

@@ -7,10 +7,10 @@ export default class FavoriteService {
     });
     return response;
   }
-  static async deleteFromFavorite(productId) {
+  static async deleteFromFavorite(favoriteId) {
     const response = await api.delete("/favorite", {
       data: {
-        productId: productId,
+        favoriteId: favoriteId,
       },
     });
     return response;

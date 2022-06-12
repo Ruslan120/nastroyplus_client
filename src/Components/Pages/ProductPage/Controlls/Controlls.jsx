@@ -19,8 +19,8 @@ const Controlls = ({addToFavoriteClick, addToBasketClick, deleteFavoriteClick, i
             )}
 
             {isFavorite ? (
-                <FavoriteBtn onClick={deleteFavoriteClick}>
-                    Удалить из избранного
+                <FavoriteBtn onClick={(e) => navigate("/favorite")}>
+                    В избранном
                 </FavoriteBtn>
             ) : (
                 <FavoriteBtn onClick={addToFavoriteClick}>

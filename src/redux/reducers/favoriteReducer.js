@@ -14,7 +14,7 @@ function favoriteReducer(state = initialState, action) {
         case DELETE_FAVORITE:
             return {
                 ...state,
-                favorites: [...state.favorites.filter((favorite) => favorite.productId !== action.payload.productId)],
+                favorites: [...state.favorites.filter((favorite) => favorite.id !== action.payload.favoriteId)],
             };
         default:
             return state;

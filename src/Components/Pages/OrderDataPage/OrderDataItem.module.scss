@@ -1,7 +1,7 @@
 .order-item{
   display: grid;
-  grid-template-columns: 1fr repeat(3, 2fr);
-  column-gap: 50px;
+  grid-template-columns: 2fr repeat(2, 3fr) 1fr;
+  column-gap: 30px;
   padding: 10px 0;
   align-items: center;
   font-size: 18px;
@@ -13,11 +13,22 @@
   }
 
   @media (max-width: 700px) {
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: repeat(3, 2fr) 1fr;
     column-gap: 15px;
     font-size: 14px;
   }
-  &__id{
+  &__img{
+    max-width: 60%;
+    height: auto;
+    border-radius: 5px;
+    @media (max-width: 400px){
+      max-width: 70%;
+      margin-right: 20px;
+      margin-top: 10px;
+      grid-column: 4 span;
+    }
+  }
+  &__link{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -29,22 +40,21 @@
     @media (max-width: 400px){
       margin-top: 10px;
       max-width: 100%;
-      grid-column: 3 span;
+      grid-column: 4 span;
     }
   }
-  &__title{
-    @media (max-width: 400px){
-      margin-top: 10px;
-      max-width: 100%;
-      grid-column: 3 span;
-    }
-  }
-  &__status{
+  &__count{
     font-weight: bold;
+    text-align: center;
     @media (max-width: 400px){
+      text-align: start;
       margin-top: 10px;
       max-width: 100%;
-      grid-column: 3 span;
+      grid-column: 4 span;
+    }
+    &:after{
+      content: " шт."
     }
   }
+
 }

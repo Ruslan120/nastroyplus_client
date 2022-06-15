@@ -29,3 +29,6 @@ export const SET_BASKET_COUNT = "SET_BASKET_COUNT"
 
 export const SET_ORDER_OPEN = "SET_ORDER_OPEN"
 export const SET_ORDERS = "SET_ORDERS"
+
+
+export const SET_ORDER_DATA = "SET_ORDER_DATA"

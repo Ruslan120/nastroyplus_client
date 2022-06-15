@@ -7,6 +7,7 @@ import EmptyList from "../../UI/EmptyList/EmptyList";
 import Spinner from "react-bootstrap/Spinner";
 
 
+
 const OrderPage = () => {
     const dispatch = useDispatch()
     const orders = useSelector(state => state.orders.orders)
@@ -15,6 +16,7 @@ const OrderPage = () => {
     useEffect(() => {
         dispatch(getOrders());
     }, [])
+
     return (
         <div>
             {!isFetching ? <div className={s["order-page"]}>

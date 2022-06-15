@@ -11,4 +11,8 @@ export default class OrderService {
   static async getOrders() {
     return api.get("/order");
   }
+
+  static async getOrderData(orderId) {
+    return api.get(`/order/data/${orderId}`);
+  }
 }

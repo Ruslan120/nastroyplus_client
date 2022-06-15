@@ -6,5 +6,6 @@ export const SEARCH = "/search/:text";
 export const FAVORITE_ROUTE = "/favorite";
 export const BASKET_ROUTE = "/basket";
 export const ORDER_ROUTE = "/order";
+export const ORDER_DATA_ROUTE = "/order/:orderId";
 //export const BASE_URL = "https://nastroyplus-server.herokuapp.com";
 export const BASE_URL = "http://localhost:7000";

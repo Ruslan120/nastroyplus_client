@@ -6,7 +6,7 @@ import {
     SET_IS_OPEN,
     SET_IS_SEARCH,
     SET_USER_DATA,
-    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS, SET_IS_FETCHING,
+    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS, SET_IS_FETCHING, SET_ORDER_DATA,
 } from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
@@ -280,6 +280,29 @@ export const getOrders = () => {
             dispatch(setOrders(response.data))
             dispatch(setIsFetching(false));
 
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+            dispatch(setIsFetching(false));
+        }
+    };
+};
+
+export const setOrderData = (orderData) => {
+    return {
+        type: SET_ORDER_DATA,
+        payload: {
+            orderData: orderData,
+        },
+    };
+};
+
+export const getOrderData = (orderId) => {
+    return async (dispatch) => {
+        try {
+            dispatch(setIsFetching(true));
+            const response = await OrderService.getOrderData(orderId);
+            dispatch(setOrderData(response.data))
+            dispatch(setIsFetching(false));
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
             dispatch(setIsFetching(false));

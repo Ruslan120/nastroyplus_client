@@ -24,6 +24,7 @@ const FavoritePage = () => {
                 {favorites.length > 0 ? <div className={s["favorite-page__content"]}>
                     <div className={s["favorite-page__items"]}>
                         <h2 className={s["favorite-page__title"]}>Избранные товары</h2>
+
                         {favorites.map(favorite => <FavoriteItem favorite={favorite}
                                                                  deleteHandler={() => deleteFromFavoriteHandler(favorite.id)}/>)}
                     </div>

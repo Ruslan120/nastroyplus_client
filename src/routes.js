@@ -11,10 +11,12 @@ import {
     PRODUCTS_ROUTE,
     PRODUCT_ROUTE,
     REGISTRATION_ROUTE,
-    ORDER_ROUTE, SEARCH
+    ORDER_ROUTE, SEARCH, ORDER_DATA_ROUTE
 } from "./utils/consts"
 import OrderPage from "./Components/Pages/OrderPage/OrderPage";
 import SearchPage from "./Components/Pages/SearchPage/SearchPage";
+import OrderDataPage from "./Components/Pages/OrderDataPage/OrderDataPage";
+import React from "react";
 
 
 export const authRoutes = [
@@ -29,6 +31,10 @@ export const authRoutes = [
     {
         path: ORDER_ROUTE,
         Component: <OrderPage/>
+    },
+    {
+        path: ORDER_DATA_ROUTE,
+        Component: <OrderDataPage/>
     },
 ]
 export const noAuthRoutes = [

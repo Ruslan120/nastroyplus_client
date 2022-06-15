@@ -7,6 +7,7 @@ import basketReducer from "./basketReducer";
 import orderFormReducer from "./orderFormReducer";
 import orderReducer from "./orderReducer";
 import searchFormReducer from "./searchFormReducer";
+import orderDataReducer from "./orderDataReducer";
 
 
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     favorites: favoriteReducer,
     basket: basketReducer,
     orders: orderReducer,
+    orderData: orderDataReducer,
 })
 
 export default rootReducer;

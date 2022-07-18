@@ -1,12 +1,12 @@
 import React from 'react';
 import s from "./MobileSearch.module.scss"
 import {useDispatch} from "react-redux";
-import {setSearchForm} from "../../../redux/actions";
+import {setIsSearch} from "../../../redux/reducers/searchFormReducer";
 
 const MobileSearch = () => {
     const dispatch = useDispatch();
-    const openSearch = ()=>{
-        dispatch(setSearchForm(true));
+    const openSearch = () => {
+        dispatch(setIsSearch(true));
     }
     return (
         <div className={s["mobile-search"]}>

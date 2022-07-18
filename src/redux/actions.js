@@ -1,107 +1,26 @@
-import {
-    ADD_TOAST, DELETE_BASKET, DELETE_FAVORITE,
-    DELETE_TOAST,
-    DELETE_USER_DATA, SET_BASKET_COUNT, SET_BASKETS, SET_FAVORITES,
-    SET_IS_AUTH,
-    SET_IS_OPEN,
-    SET_IS_SEARCH,
-    SET_USER_DATA,
-    SET_IS_LOADED, SET_ORDER_OPEN, SET_ORDERS, SET_IS_FETCHING, SET_ORDER_DATA,
-} from "./types";
 import {v4 as uuidv4} from "uuid";
 import AuthService from "../services/AuthService";
 import FavoriteService from "../services/FavoriteService";
 import BasketService from "../services/BasketService";
 import OrderService from "../services/OrderService";
+import {deleteUserData, setIsAuth, setIsFetching, setUserData} from "./reducers/appReducer";
+import {addToast, deleteToast} from "./reducers/toastReducer";
+import {deleteFavorite, setFavorites} from "./reducers/favoriteReducer";
+import ProductService from "../services/ProductService";
+import {setIsBasket, setIsFavorite, setProductData} from "./reducers/productPageReducer";
+import {deleteBaskets, setBasketCount, setBaskets} from "./reducers/basketReducer";
+import {setOrders} from "./reducers/orderReducer";
+import {setOrderData} from "./reducers/orderDataReducer";
 
 export const addToastTime = (type, message) => {
     return (dispatch) => {
         const id = uuidv4();
-        dispatch(addToast(type, id, message));
+        dispatch(addToast({type, id, message}));
         setTimeout(() => {
-            dispatch(deleteToast(id));
+            dispatch(deleteToast({id}));
         }, 3000);
     };
 };
-
-export const addToast = (type, id, message) => {
-    return {
-        type: ADD_TOAST,
-        payload: {
-            id,
-            type,
-            message,
-        },
-    };
-};
-
-export const deleteToast = (id) => {
-    return {
-        type: DELETE_TOAST,
-        payload: {
-            id,
-        },
-    };
-};
-
-export const setLoginForm = (isOpen) => {
-    return {
-        type: SET_IS_OPEN,
-        payload: {
-            isOpen,
-        },
-    };
-};
-export const setSearchForm = (isSearch) => {
-    return {
-        type: SET_IS_SEARCH,
-        payload: {
-            isSearch,
-        },
-    };
-};
-
-
-
-export const setUserData = (userData) => {
-    return {
-        type: SET_USER_DATA,
-        payload: {
-            userData,
-        },
-    };
-};
-export const deleteUserData = () => {
-    return {
-        type: DELETE_USER_DATA,
-    };
-};
-export const setIsAuth = (isAuth) => {
-    return {
-        type: SET_IS_AUTH,
-        payload: {
-            isAuth,
-        },
-    };
-};
-export const setIsLoaded = (isLoaded) => {
-    return {
-        type: SET_IS_LOADED,
-        payload: {
-            isLoaded: isLoaded,
-        },
-    };
-};
-
-export const setIsFetching= (isFetching) => {
-    return {
-        type: SET_IS_FETCHING,
-        payload: {
-            isFetching: isFetching,
-        },
-    };
-};
-
 
 
 export const loginAction = (email, password) => {
@@ -144,29 +63,14 @@ export const logoutAction = () => {
     };
 };
 
-export const setFavorites = (favorites) => {
-    return {
-        type: SET_FAVORITES,
-        payload: {
-            favorites: favorites,
-        },
-    };
-};
-export const deleteFavoriteData = (favoriteId) => {
-    return {
-        type: DELETE_FAVORITE,
-        payload: {
-            favoriteId: favoriteId,
-        },
-    };
-};
 
 export const getFavorites = () => {
     return async (dispatch) => {
         try {
             dispatch(setIsFetching(true));
             const response = await FavoriteService.myFavorites();
-            dispatch(setFavorites(response.data))
+            const payload = {favorites: response.data}
+            dispatch(setFavorites(payload))
             dispatch(setIsFetching(false));
 
         } catch (e) {
@@ -175,11 +79,11 @@ export const getFavorites = () => {
         }
     };
 };
-export const deleteFavorite = (favoriteId) => {
+export const deleteFavoriteById = (favoriteId) => {
     return async (dispatch) => {
         try {
             const response = await FavoriteService.deleteFromFavorite(favoriteId)
-            dispatch(deleteFavoriteData(favoriteId))
+            dispatch(deleteFavorite(favoriteId))
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
@@ -187,33 +91,6 @@ export const deleteFavorite = (favoriteId) => {
     };
 };
 
-
-export const setBaskets = (baskets) => {
-    return {
-        type: SET_BASKETS,
-        payload: {
-            baskets: baskets,
-        },
-    };
-};
-export const deleteBasket = (basketId) => {
-    return {
-        type: DELETE_BASKET,
-        payload: {
-            basketId: basketId,
-        },
-    };
-};
-
-export const updateCountBasket = (basketId, count) => {
-    return {
-        type: SET_BASKET_COUNT,
-        payload: {
-            basketId: basketId,
-            count: count,
-        },
-    };
-};
 
 export const getBaskets = () => {
     return async (dispatch) => {
@@ -233,7 +110,7 @@ export const deleteBasketData = (basketId) => {
     return async (dispatch) => {
         try {
             const response = await BasketService.deleteFromBasket(basketId)
-            dispatch(deleteBasket(basketId))
+            dispatch(deleteBaskets(basketId))
 
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
@@ -245,32 +122,14 @@ export const updateBasketCount = (basketId, count) => {
     return async (dispatch) => {
         try {
             const response = await BasketService.updateBasketCount(basketId, count)
-            dispatch(updateCountBasket(basketId, count))
-
+            const payload = {basketId, count}
+            dispatch(setBasketCount(payload))
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
         }
     };
 };
 
-
-export const setOrderForm = (isOpen) => {
-    return {
-        type: SET_ORDER_OPEN,
-        payload: {
-            isOpen,
-        },
-    };
-};
-
-export const setOrders = (orders) => {
-    return {
-        type: SET_ORDERS,
-        payload: {
-            orders: orders,
-        },
-    };
-};
 
 export const getOrders = () => {
     return async (dispatch) => {
@@ -287,14 +146,6 @@ export const getOrders = () => {
     };
 };
 
-export const setOrderData = (orderData) => {
-    return {
-        type: SET_ORDER_DATA,
-        payload: {
-            orderData: orderData,
-        },
-    };
-};
 
 export const getOrderData = (orderId) => {
     return async (dispatch) => {
@@ -306,6 +157,46 @@ export const getOrderData = (orderId) => {
         } catch (e) {
             dispatch(addToastTime("error", e.response.data.message));
             dispatch(setIsFetching(false));
+        }
+    };
+};
+
+export const getProductData = (productId) => {
+    return async (dispatch) => {
+        try {
+            const response = await ProductService.getProductById(productId)
+            dispatch(setProductData(response.data))
+
+            const isBasket = await BasketService.isBasket(productId)
+            dispatch(setIsBasket(isBasket.data));
+
+            const isFavorite = await FavoriteService.isFavorite(productId)
+            dispatch(setIsFavorite(isFavorite.data));
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+
+export const addToFavorite = (productId) => {
+    return async (dispatch) => {
+        try {
+            const response = await FavoriteService.addToFavorite(productId)
+            dispatch(addToastTime("success", "Товар успешно добавлен в избранное!"));
+            dispatch(setIsFavorite(true))
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
+        }
+    };
+};
+export const addToBasket = (productId) => {
+    return async (dispatch) => {
+        try {
+            const response = await BasketService.addToBasket(productId)
+            dispatch(addToastTime("success", "Товар успешно добавлен в корзину!"));
+            dispatch(setIsBasket(true))
+        } catch (e) {
+            dispatch(addToastTime("error", e.response.data.message));
         }
     };
 };

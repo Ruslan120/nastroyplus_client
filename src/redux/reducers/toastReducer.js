@@ -1,25 +1,28 @@
-import {ADD_TOAST, DELETE_TOAST} from "../types";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     toasts: []
 }
 
-function toastReducer(state = initialState, action) {
-    switch (action.type) {
-        case ADD_TOAST:
-            return {
-                ...state,
-                toasts: [...state.toasts, {
-                    id: action.payload.id,
-                    type: action.payload.type,
-                    message: action.payload.message
-                }]
-            };
-        case DELETE_TOAST:
-            return {...state, toasts: [...state.toasts.filter((toast) => toast.id !== action.payload.id)]};
-        default:
-            return state;
-    }
-}
 
-export default toastReducer;
+
+
+export const toastSlice = createSlice({
+    name: 'toast',
+    initialState,
+    reducers: {
+        addToast: (state, action) => {
+            state.toasts.push({
+                id: action.payload.id,
+                type: action.payload.type,
+                message: action.payload.message
+            })
+        },
+        deleteToast: (state, action) => {
+            state.toasts = state.toasts.filter((toast) => toast.id !== action.payload.id)
+        },
+    },
+})
+
+export const {addToast, deleteToast} = toastSlice.actions
+export default toastSlice.reducer

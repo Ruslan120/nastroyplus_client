@@ -5,12 +5,12 @@ import PageContainer from "./Components/Pages/PageContainer";
 import {useEffect} from "react";
 import AuthService from "./services/AuthService";
 import {useDispatch} from "react-redux";
-import {setIsAuth, setIsLoaded, setUserData} from "./redux/actions";
 import OrderModal from "./Components/OrderModal/OrderModal";
 import s from "./App.module.scss"
 import Footer from "./Components/Footer/Footer";
 import MobileSearch from "./Components/UI/mobile-search/MobileSearch";
 import SearchModal from "./Components/SearchModal/SearchModal";
+import {setIsAuth, setIsLoaded, setUserData} from "./redux/reducers/appReducer";
 
 function App() {
     const dispatch = useDispatch();

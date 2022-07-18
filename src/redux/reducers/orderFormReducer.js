@@ -1,21 +1,20 @@
-import {SET_ORDER_OPEN} from "../types";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     isOpen: false,
     error: "",
 }
 
-function orderFormReducer(state = initialState, action) {
-    switch (action.type) {
-        case SET_ORDER_OPEN:
-            return {
-                ...state,
-                isOpen: action.payload.isOpen
-            };
 
-        default:
-            return state;
-    }
-}
+export const orderFormSlice = createSlice({
+    name: 'orderForm',
+    initialState,
+    reducers: {
+        setOrderOpen: (state, action) => {
+            state.isOpen = action.payload
+        },
+    },
+})
 
-export default orderFormReducer;
+export const {setOrderOpen} = orderFormSlice.actions
+export default orderFormSlice.reducer

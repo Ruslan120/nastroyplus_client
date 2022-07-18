@@ -1,4 +1,4 @@
-import {SET_ORDER_DATA} from "../types";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     orderData: {
@@ -6,16 +6,15 @@ const initialState = {
     },
 };
 
-function orderDataReducer(state = initialState, action) {
-    switch (action.type) {
-        case SET_ORDER_DATA:
-            return {
-                ...state,
-                orderData: action.payload.orderData,
-            };
-        default:
-            return state;
-    }
-}
+export const orderDataSlice = createSlice({
+    name: 'orderData',
+    initialState,
+    reducers: {
+        setOrderData: (state, action) => {
+            state.orderData = action.payload
+        },
+    },
+})
 
-export default orderDataReducer;
+export const {setOrderData,} = orderDataSlice.actions
+export default orderDataSlice.reducer

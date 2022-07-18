@@ -1,20 +1,19 @@
-import {SET_IS_OPEN} from "../types";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     isOpen: false,
     error: "",
 }
 
-function loginFormReducer(state = initialState, action) {
-    switch (action.type) {
-        case SET_IS_OPEN:
-            return {
-                ...state,
-                isOpen: action.payload.isOpen
-            };
-        default:
-            return state;
-    }
-}
+export const loginFormSlice = createSlice({
+    name: 'loginForm',
+    initialState,
+    reducers: {
+        setIsOpen: (state, action) => {
+            state.isOpen = action.payload
+        },
+    },
+})
 
-export default loginFormReducer;
+export const {setIsOpen} = loginFormSlice.actions
+export default loginFormSlice.reducer

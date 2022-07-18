@@ -4,7 +4,7 @@ import CustomBtn from "../../../UI/custom-btn/Custom-btn";
 import FavoriteBtn from "../../../UI/favorite-btn/Favorite-btn";
 import {useNavigate} from "react-router-dom";
 
-const Controlls = ({addToFavoriteClick, addToBasketClick, deleteFavoriteClick, isBasket, isFavorite}) => {
+const Controlls = ({addToFavoriteClick, addToBasketClick, isBasket, isFavorite}) => {
     const navigate = useNavigate();
     return (
         <div className={s["controlls"]}>

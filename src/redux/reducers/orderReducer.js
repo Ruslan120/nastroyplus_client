@@ -1,20 +1,18 @@
-import {SET_ORDERS} from "../types";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     orders: [],
 };
+export const orderSlice = createSlice({
+    name: 'order',
+    initialState,
+    reducers: {
+        setOrders: (state, action) => {
+            state.orders = action.payload
+        },
+    },
+})
 
-function orderReducer(state = initialState, action) {
-    switch (action.type) {
-        case SET_ORDERS:
-            return {
-                ...state,
-                orders: action.payload.orders,
-            };
+export const {setOrders,} = orderSlice.actions
+export default orderSlice.reducer
 
-        default:
-            return state;
-    }
-}
-
-export default orderReducer;

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import s from './FavoritePage.module.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {deleteFavorite, getFavorites} from "../../../redux/actions";
+import {deleteFavoriteById, getFavorites} from "../../../redux/actions";
 import FavoriteItem from "./FavoriteItem/FavoriteItem";
 import EmptyList from "../../UI/EmptyList/EmptyList";
 import Spinner from "react-bootstrap/Spinner";
@@ -12,7 +12,7 @@ const FavoritePage = () => {
     const favorites = useSelector(state => state.favorites.favorites)
     const isFetching = useSelector(state => state.app.isFetching)
     const deleteFromFavoriteHandler = (favoriteId) => {
-        dispatch(deleteFavorite(favoriteId))
+        dispatch(deleteFavoriteById(favoriteId))
     };
 
     useEffect(() => {

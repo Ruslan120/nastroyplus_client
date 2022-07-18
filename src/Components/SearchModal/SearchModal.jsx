@@ -1,14 +1,14 @@
 import { React,} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {setSearchForm} from "../../redux/actions";
 import Modal from "../UI/modal/Modal";
 import SearchForm from "./SearchForm/SearchForm";
+import {setIsSearch} from "../../redux/reducers/searchFormReducer";
 const SearchModal = () => {
   const searchActive = useSelector((state) => state.searchForm.isSearch);
   const dispatch = useDispatch();
 
   const handlerSetIsSearch = () => {
-    dispatch(setSearchForm(false));
+    dispatch(setIsSearch(false));
   };
 
   return (

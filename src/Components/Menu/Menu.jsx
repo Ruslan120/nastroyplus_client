@@ -3,14 +3,12 @@ import s from "./Menu.module.scss";
 import MobileMenu from "../UI/mobile-menu/Mobile-menu";
 import Blur from "../UI/Blur/Blur";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    setLoginForm,
-} from "../../redux/actions";
 import {useNavigate} from "react-router-dom";
 import UserMenu from "../UI/UserMenu/UserMenu";
 import MenuLink from "./MenuLink";
 import CustomInput from "../UI/custom-input/Custom-input";
 import {useForm} from "react-hook-form";
+import {setIsOpen} from "../../redux/reducers/loginFormReducer";
 
 
 const Menu = () => {
@@ -25,7 +23,7 @@ const Menu = () => {
     } = useForm({mode: "onBlur"});
 
     const handlerLogin = () => {
-        dispatch(setLoginForm(true));
+        dispatch(setIsOpen(true));
     };
     const search = () => {
         const searchText = getValues().search;
